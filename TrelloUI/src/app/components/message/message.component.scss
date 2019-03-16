@@ -1,0 +1,74 @@
+.con {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 1.5rem;
+  background: white;
+  height: 100%;
+}
+
+.btn {
+  text-transform: uppercase;
+  color: #fff;
+  padding: 1rem;
+  height: 70%;
+  display: inline-block;
+  cursor: pointer;
+}
+.btn:focus {
+  outline: none;
+}
+.upload-div {
+  display: flex;
+
+}
+.btn-mid {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.btn-success {
+  background: var(--color-primary);
+  border: 1px solid var(--color-primary);
+
+}
+.btn-warning {
+  background: rgba(0, 0, 0, .7);
+  border: 1px solid rgba(0, 0, 0, .7);
+
+}
+
+.message-list, .inbox-unread, .outbox {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  &__text-header {
+    margin: 1.5rem;
+  }
+  &__text {
+    padding: .7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__clickable {
+    cursor: pointer;
+  }
+  &__clickable:hover {
+    background: lightblue;
+  }
+}
+.img-circle {
+  height: 3.25rem;
+  border-radius: 50%;
+}
+.justify-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 3rem;
+}
+

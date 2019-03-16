@@ -1,0 +1,25 @@
+<ul class="side-nav">
+        <li class="side-nav__item" *ngFor="let route of routeParams">
+           <a  class="side-nav__link" [routerLink]="['/bookings', route.value]">
+            <i class="fa fa-2x {{route.imgIcon}}"></i>
+            <!--  <svg class="side-nav__icon">
+                 <use xlink:href="../../../assets/img/sprite.svg#{{route.imgIcon}}"></use>
+             </svg> -->
+             <span class="side-nav__text">{{route.display}}</span>
+           </a>
+        </li>
+
+         <li class="side-nav__item" (click)="createBooking()" *ngIf="isUserAdmin && IsUserLoggedIn">
+          <a class="side-nav__link">
+              <span class="side-nav__text">Create Booking</span>
+          </a>
+        </li>
+        <li class="side-nav__item"  *ngIf="isUserAdmin && IsUserLoggedIn">
+          <a class="side-nav__link" [routerLink]="['/my-bookings']">
+              <span class="side-nav__text">My Bookings</span>
+          </a>
+        </li>
+      </ul>
+      <div class="legal">
+          &copy; &nbsp;2019 by Trillo. All rights reserved.
+      </div>

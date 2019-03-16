@@ -1,0 +1,55 @@
+<div class="con">
+  <div class="chat-container">
+      <div *ngFor="let message of messages">
+          <!-- To me -->
+        <div class="recipient-container" *ngIf="message.senderId == recipientId">
+          <div class="flex">
+            <img  src="../../../assets/img/user-1.jpg" alt="Recipient Photo" class="img-photo">
+          <div class="msg-det">
+            <h3 class="name">
+              {{message.senderKnownAs | titlecase}}
+            </h3>
+            <div class="message">
+              {{message.messageContent}}
+            </div>
+          </div>
+          </div>
+         <div class="align-up">
+            <div class="time-det" *ngIf="message.isRead">
+                <i class="fa fa-clock-o"></i>
+                {{message.dateSent | timeAgo}}<span class="text-read"> (read) </span>
+            </div>
+            <div class="time-det" *ngIf="!message.isRead">
+                <i class="fa fa-clock-o"></i>
+                {{message.dateSent | timeAgo}} <span class="text-unread"> (read) </span>
+            </div>
+         </div>
+        </div>
+
+        <div class="sender-container" *ngIf="message.senderId != recipientId">
+            <div class="msg-det">
+                <h3 class="name">
+                    {{message.senderKnownAs | titlecase}}
+                </h3>
+              <div class="message">
+                {{message.messageContent}}
+              </div>
+            </div>
+
+           <div class="flex-o">
+              <div class="time-det">
+                <i class="fa fa-clock-o"></i>
+                {{message.dateSent | timeAgo}}
+                </div>
+              <img src="../../../assets/img/user-2.jpg" alt="Sender Photo" class="img-photo">
+           </div>
+          </div>
+        </div>
+        <div class="chat-footer">
+           <form action="" #chatControl="ngForm" (ngSubmit)="sendMessage()">
+              <input type="text" name="messageContent" required class="text-input" [(ngModel)]="messageToCreateDto.messageContent" placeholder="Send a private message">
+              <input  type="submit" value="Send" class="btn" [disabled]="chatControl.invalid">
+           </form>
+          </div>
+  </div>
+</div>

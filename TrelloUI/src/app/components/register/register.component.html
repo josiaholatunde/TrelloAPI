@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="heading">
+    <div>
+        <h3 class="heading-text">Registeration Form</h3>
+    </div>
+    <form class="login-form" #registerationFormControl="ngForm" (ngSubmit)="register()" >
+      <div class="form-group animation-group">
+        <label class="login-form__label" for="firstname">Firstname</label>
+        <input type="text" class="login-form__input" id="firstname" name="firstName" #firstNameControl="ngModel" required
+        [(ngModel)]="userForRegisterDto.firstName">
+        <span class="error-feedback" *ngIf="firstNameControl.invalid && firstNameControl.touched">
+          Firstname field is required
+        </span>
+      </div>
+      <div class="form-group animation-group">
+        <label class="login-form__label" for="lastname">Lastname</label>
+        <input type="text" class="login-form__input" id="lastname" required #lastNameControl="ngModel"
+        [(ngModel)]="userForRegisterDto.lastName" name="lastName">
+        <span class="error-feedback" *ngIf="lastNameControl.invalid && lastNameControl.touched">Lastname field is required</span>
+      </div>
+      <div class="form-group animation-group">
+        <label class="login-form__label" for="username">Username</label>
+        <input type="text" class="login-form__input" id="username" required #userNameControl="ngModel"
+        [(ngModel)]="userForRegisterDto.userName"  name="userName">
+        <span class="error-feedback" *ngIf="userNameControl.invalid && userNameControl.touched">
+          Username field is required
+        </span>
+      </div>
+      <div class="form-group animation-group">
+          <label class="login-form__label">Password</label>
+          <input type="password" class="login-form__input" id="password" required #passwordControl="ngModel"
+          [(ngModel)]="userForRegisterDto.password" name="password">
+          <span class="error-feedback" *ngIf="passwordControl.invalid && passwordControl.touched">Password field is required</span>
+      </div>
+      <div class="form-group">
+        <input type="submit" value="Register" class="login-form__btn login-form__btn-block" [disabled]="registerationFormControl.invalid">
+      </div>
+    </form>
+  </div>
+</div>

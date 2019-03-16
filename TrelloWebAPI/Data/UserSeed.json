@@ -1,0 +1,44 @@
+[
+    {
+        "UserName": "Olatunde",
+        "Password": "password",
+        "FirstName": "Olatunde",
+        "LastName": "Ogunboyejo",
+        "UserRole": 1
+    },
+    {
+        "UserName": "foterazzi",
+        "Password": "password",
+        "FirstName": "Ifeoluwa",
+        "LastName": "Olufotebi",
+        "UserRole": 0
+    },
+    {
+        "UserName": "labule",
+        "Password": "password",
+        "FirstName": "Omotola",
+        "LastName": "Liadi",
+        "UserRole": 0
+    },
+    {
+        "UserName": "kacha",
+        "Password": "password",
+        "FirstName": "Emmanuella",
+        "LastName": "Ezeakacha",
+        "UserRole": 0
+    },
+    {
+        "UserName": "lee",
+        "Password": "password",
+        "FirstName": "Halimat",
+        "LastName": "Adesanya",
+        "UserRole": 1
+    },
+    {
+        "UserName": "dimgba",
+        "Password": "password",
+        "FirstName": "Dimeji",
+        "LastName": "Fatona",
+        "UserRole": 0
+    }
+]

@@ -1,0 +1,30 @@
+<main class="hotel-view">
+<div class="container">
+    <div class="heading">
+      <div>
+          <h3 class="heading-text">Login Form</h3>
+      </div>
+      <form class="login-form" #loginFormControl="ngForm" (ngSubmit)="login()" >
+        <div class="form-group animation-group">
+          <label class="login-form__label">Username</label>
+          <input type="text" class="login-form__input" name="username" #userNameControl="ngModel" required [(ngModel)]="userForLogin.username">
+          <span class="error-feedback" *ngIf="userNameControl.invalid && userNameControl.touched">
+              Username field is required
+            </span>
+        </div>
+        <div class="form-group animation-group">
+            <label class="login-form__label">Password</label>
+            <input type="password" name="password" #passwordControl="ngModel" required
+            [(ngModel)]="userForLogin.password"
+            class="login-form__input">
+            <span class="error-feedback" *ngIf="passwordControl.invalid && passwordControl.touched">
+                Firstname field is required
+              </span>
+        </div>
+        <div class="form-group">
+          <input type="submit" value="Login" class="login-form__btn login-form__btn-block" [disabled]="loginFormControl.invalid">
+        </div>
+      </form>
+    </div>
+</div>
+</main>

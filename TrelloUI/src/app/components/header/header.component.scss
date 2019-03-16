@@ -1,0 +1,160 @@
+.header {
+  background: #fff;
+  border-bottom: 1px solid red;
+  height: 7rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.4rem;
+  @media only screen and (max-width: 36rem) {
+    flex-wrap: wrap;
+    align-content: space-around;
+    height: 11rem;
+  }
+}
+
+
+
+//LOGO
+.logo {
+  height: 3.25rem;
+  margin-left: 2rem;
+}
+
+//SEARCH
+.search {
+  flex: 0 0 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  @media only screen and (max-width: 36rem) {
+    order: 1;
+    flex: 0 0 100%;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  &__input {
+      font-size: inherit;
+      font-family: inherit;
+      height: 2.25rem;
+      padding: 1.3rem 2rem;
+      background: var(--light-grey-2);
+      border: 1px solid ;
+      border-radius: 2rem;
+      color: inherit;
+      width: 80%;
+      margin-right: -3.5rem;
+      transition: all .2s;
+      &:focus {
+          outline: none;
+          width: 95%;
+          background: var(--light-grey-1)
+      }
+  }
+  &__icon {
+      height: 2rem;
+      width: 2rem;
+      &:active, &:focus {
+        outline: none;
+      }
+  }
+  &__button {
+      border: none;
+      cursor: pointer;
+      position: absolute;
+      left: 35rem;
+      background: var(--dark-grey-2);
+      &:active, &:focus {
+          outline: none;
+          transform: translateY(2px);
+      }
+      @media only screen and (max-width: 36rem) {
+        left: 42rem;
+      }
+
+  }
+}
+
+//USER NAV
+.user-nav {
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  position: relative;
+  & > * {
+      margin: 0 1.6rem;
+      cursor: pointer;
+      align-self: stretch;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      @media only screen and (max-width: 35rem) {
+        margin: 0 1.2rem;
+      }
+
+  }
+
+  & > *:hover {
+      background: var(--grey-dark-2);
+  }
+  & > *:hover .user-nav__icon {
+      fill: #fff;
+  }
+  &__icon-box {
+     position: relative;
+  }
+  &__icon {
+      height: 2rem;
+      width: 2rem;
+      fill: var(--grey-dark-2);
+  }
+  &__user-photo{
+      height: 3.25rem;
+      border-radius: 50%;
+      margin-right: .4rem;
+  }
+
+  &__notification {
+      height: 1.75rem;
+      width: 1.75rem;
+      background: var(--color-primary);
+      border-radius: 50%;
+      color: #fff;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 1.8rem;
+      left: 1.5rem;
+  }
+  &__auth {
+    color: var(--color-primary);
+    text-transform: uppercase;
+  }
+}
+
+.ui-autocomplete-list-item {
+  list-style: none;
+}
+.user-nav__user:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content{
+  display: none;
+  position: absolute;
+  top: 6.8rem;
+  background: var(--color-primary);
+  min-width: 6rem;
+  box-shadow: 0 .8rem 1.6rem rgba(0, 0, 0, .2);
+  z-index: 1;
+  & a{
+    color: white;
+    padding: 1.2rem 1.6rem;
+    display: block;
+  }
+}
+

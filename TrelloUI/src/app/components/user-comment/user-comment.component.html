@@ -1,0 +1,41 @@
+<p-dialog header="Create Comment" [(visible)]="passDisplay" [modal]="true" [responsive]="true"
+[contentStyle]="{width: '550px', minWidth: '400px', maxHeight: '500px'}" [draggable]="false"
+[minY]="70" [baseZIndex]="10000">
+<form #userCommentControl="ngForm" (ngSubmit)="createComment()" >
+    <div class="form-group animation-group">
+        <label class="login-form__label">Description</label>
+        <textarea  class="login-form__textarea" name="description" [(ngModel)]="commentDto.description" rows="5" required
+        minlength="140" maxlength="175"  #descriptionControl="ngModel">
+        </textarea>
+        <span class="error-feedback-textarea" *ngIf="descriptionControl.invalid && descriptionControl.touched">
+            Description field is required
+        </span>
+        <span class="error-feedback-textarea" *ngIf="descriptionControl.hasError('minlength') && descriptionControl.touched">
+          Comments must not be less than 140 characters
+        </span>
+        <span class="error-feedback-textarea" *ngIf="descriptionControl.hasError('minlength') && descriptionControl.touched">
+          Comments must not be greater than 175 characters
+        </span>
+    </div>
+    <div class="form-group animation-group">
+        <label class="login-form__label" for="rating">Rating</label>
+        <input type="number" class="login-form__input" id="rating" name="rating" min="0" max="5" #ratingControl="ngModel"
+        required [(ngModel)]="commentDto.rating">
+        <span class="error-feedback" *ngIf="ratingControl.invalid && ratingControl.touched">
+          Rating field is required
+        </span>
+        <span class="error-feedback" *ngIf="ratingControl.hasError('min') && ratingControl.touched">
+          The Minimum rating value is 0
+        </span>
+        <span class="error-feedback" *ngIf="ratingControl.hasError('max') && ratingControl.touched">
+          The Maximum rating value is 5
+        </span>
+      </div>
+
+      <p-footer>
+        <input type="submit"
+        [disabled]="userCommentControl.invalid"
+          [ngClass]="userCommentControl.invalid ? 'invalid': 'login-form__btn login-form__btn-block'" value="Create Comment">
+      </p-footer>
+</form>
+</p-dialog>

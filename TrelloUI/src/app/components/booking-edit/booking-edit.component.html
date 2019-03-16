@@ -1,0 +1,103 @@
+
+<div class="con">
+  <div class="info" *ngIf="editBookingGroup.dirty">
+    <strong>Information: </strong> You have made changes to this booking. Please do note that any unsaved changes would be lost
+  </div>
+    <p-tabView>
+        <p-tabPanel header="Edit Booking">
+            <form class="login-form" [formGroup]="editBookingGroup" (ngSubmit)="editBooking()" >
+                <div class="form-group animation-group">
+                  <label class="login-form__label">Name</label>
+                  <input type="text" class="login-form__input" formControlName="name">
+                  <span class="error-feedback" *ngIf="editBookingGroup.get('name').hasError('required') &&
+                    editBookingGroup.get('name').touched">
+                      Name field is required
+                  </span>
+                </div>
+                <div class="form-group animation-group">
+                  <label class="login-form__label">Booking Type</label>
+                  <select class="login-form__input" formControlName="bookingSubjectType" >
+                    <option *ngFor="let type of bookingType" [value]="type.value"> {{type.display}} </option>
+                  </select>
+                </div>
+                <div class="form-group animation-group">
+                  <label class="login-form__label">Main Description</label>
+                  <textarea  class="login-form__textarea" formControlName="mainDescription" rows="5">
+                  </textarea>
+                  <span class="error-feedback-textarea" *ngIf="editBookingGroup.get('mainDescription').hasError('required') &&
+                  editBookingGroup.get('mainDescription').touched">
+                      Main Description field is required
+                  </span>
+                  <span class="error-feedback-textarea-1" *ngIf="editBookingGroup.get('mainDescription').hasError('minlength') &&
+                  editBookingGroup.get('mainDescription').touched">
+                      No of characters must not be less than 272
+                  </span>
+                  <span class="error-feedback-textarea-2" *ngIf="editBookingGroup.get('mainDescription').hasError('maxlength') &&
+                  editBookingGroup.get('mainDescription').touched">
+                      No of characters must not be greater than 276
+                  </span>
+                </div>
+                <div class="form-group animation-group">
+                    <label class="login-form__label">Additional Description</label>
+                    <textarea  class="login-form__textarea" formControlName="subDescription" rows="5">
+                    </textarea>
+                    <span class="error-feedback-textarea" *ngIf="editBookingGroup.get('subDescription').hasError('required') &&
+                    editBookingGroup.get('subDescription').touched">
+                        Additional Description field is required
+                    </span>
+                </div>
+                <div class="form-group animation-group">
+                    <label class="login-form__label">City</label>
+                    <input type="text" class="login-form__input" formControlName="city">
+                    <span class="error-feedback" *ngIf="editBookingGroup.get('city').hasError('required') &&
+                    editBookingGroup.get('city').touched">
+                        City field is required
+                    </span>
+                </div>
+                <div class="form-group animation-group">
+                    <label class="login-form__label">Country</label>
+                    <input type="text" class="login-form__input" formControlName="country">
+                    <span class="error-feedback" *ngIf="editBookingGroup.get('country').hasError('required') &&
+                    editBookingGroup.get('country').touched">
+                        Country field is required
+                    </span>
+                </div>
+                <div class="form-group animation-group">
+                    <label class="login-form__label">Features</label>
+                    <textarea  class="login-form__textarea" formControlName="bookingFeatures" rows="5">
+                    </textarea>
+                    <span class="error-feedback-textarea" *ngIf="editBookingGroup.get('bookingFeatures').hasError('required') &&
+                    editBookingGroup.get('bookingFeatures').touched">
+                        Features field is required
+                    </span>
+                </div>
+                <div class="form-group animation-group">
+                    <label class="login-form__label">Total number of BookingSubjects</label>
+                    <input type="number"  class="login-form__input" formControlName="totalBookingSubjects">
+                    <span class="error-feedback" *ngIf="editBookingGroup.get('totalBookingSubjects').hasError('required') &&
+                    editBookingGroup.get('totalBookingSubjects').touched">
+                        Total BookingSubjects field is required
+                    </span>
+                </div>
+                <div class="form-group animation-group">
+                    <label class="login-form__label">Number of BookingSubjects Left</label>
+                    <input type="number"  class="login-form__input" formControlName="noOfBookingSubjectsLeft">
+                    <span class="error-feedback" *ngIf="editBookingGroup.get('noOfBookingSubjectsLeft').hasError('required') &&
+                    editBookingGroup.get('noOfBookingSubjectsLeft').touched">
+                    No of Booking SubjectsLeft  field is required
+                    </span>
+                </div>
+
+              <p-footer>
+                  <input type="submit"
+                  [disabled]="editBookingGroup.pristine"
+                    [ngClass]="editBookingGroup.invalid ? 'invalid': 'login-form__btn login-form__btn-block'" value="Save Changes">
+                </p-footer>
+              </form>
+        </p-tabPanel>
+        <p-tabPanel header="Photo Gallery">
+            <app-photo-upload></app-photo-upload>
+        </p-tabPanel>
+      </p-tabView>
+</div>
+

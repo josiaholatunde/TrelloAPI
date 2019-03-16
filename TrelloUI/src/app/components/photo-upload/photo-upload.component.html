@@ -1,0 +1,72 @@
+<div class="con">
+  <div *ngIf="photos.length > 0 && hasGallery" class="flex-image">
+      <div class="img-card" *ngFor="let photo of photos">
+          <img src="{{photo.url}}" alt="Booking 1" class="card__img">
+          <i class=" fa fa-times fa-2x text-danger btn-remove" (click)="deleteGalleryPhoto(photo)"></i>
+      </div>
+  </div>
+  <h1>Add Photos</h1>
+    <div class="flex-con">
+        <div ng2FileDrop
+        [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
+        (fileOver)="fileOverBase($event)"
+        [uploader]="uploader"
+        class="card bg-faded p-3 text-center mb-3 my-drop-zone">
+        <i class="fa fa-upload fa-4x"></i>
+        Base drop zone
+      </div>
+    </div>
+
+ <div class="upload-div">
+  <div class="con-1">
+    <h3 class="text-header">Multiple</h3>
+    <input type="file" ng2FileSelect [uploader]="uploader" multiple  />
+    <h3 class="text-header">Single</h3>
+    <input type="file" ng2FileSelect [uploader]="uploader"/>
+  </div>
+  <div class="con-2" *ngIf="uploader?.queue?.length">
+
+    <h3 class="text-header">Upload queue</h3>
+    <p class="text-header">Queue length: {{ uploader?.queue?.length }}</p>
+
+    <table>
+        <thead>
+        <tr>
+            <th width="50%">Name</th>
+            <th>Size</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of uploader.queue">
+            <td><strong>{{ item?.file?.name }}</strong></td>
+            <td *ngIf="uploader.options.isHTML5" nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div>
+        <div>
+            <h4 class="text-header">Queue progress:</h4>
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
+            </div>
+        </div>
+        <div class="mt-2">
+            <button type="button" class="btn btn-success"
+            (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+            <span class="fa fa-upload"></span> Upload all
+            </button>
+            <button type="button" class="btn btn-warning btn-mid"
+                    (click)="uploader.cancelAll()" [disabled]="!uploader.isUploading">
+                <span class="fa fa-ban"></span> Cancel all
+            </button>
+            <button type="button" class="btn btn-danger"
+                    (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
+                <span class="fa fa-trash-o"></span> Remove all
+            </button>
+        </div>
+    </div>
+
+</div>
+ </div>
+</div>

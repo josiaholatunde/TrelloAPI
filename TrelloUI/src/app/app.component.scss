@@ -1,0 +1,82 @@
+.container {
+  max-width: 110rem;
+  margin: 8rem auto;
+  min-height: 60rem;
+  background: var(--grey-light-2);
+  box-shadow: var(--shadow-dark);
+
+  @media only screen and (max-width: 63rem) {
+      margin: 0;
+      width: 100%;
+      max-width: 100%;
+  }
+}
+
+
+.hotel-view {
+  flex-grow: 1; //same as shorthand for flex=1
+}
+
+.sidebar {
+  margin: 0;
+  background: var(--grey-dark);
+  flex: 0 0 18%;
+  min-height: 53rem;
+  @media only screen and (max-width: 46rem) {
+    min-height: 4rem;
+  }
+}
+
+.content {
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+  @media only screen and (max-width: 46rem) {
+      flex-direction: column;
+  }
+}
+.flex-container {
+  display: flex;
+}
+
+  /* Modal Body */
+  .modal-view {
+    position: relative;
+  }
+  .modal-body {padding: .2rem 1rem;}
+
+  /* Modal Footer */
+  .modal-footer {
+    padding: .2rem 1rem;
+    background-color: #5cb85c;
+    color: white;
+  }
+
+  /* Modal Content */
+  .modal-content {
+    position: absolute;
+    background-color: red;
+    margin: auto;
+    top: 10rem;
+    left: -40rem;
+    padding: 0;
+    border: 1px solid #888;
+    width: 100%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animatetop;
+    animation-duration: 0.4s
+  }
+
+  /* Add Animation */
+  @keyframes animatetop {
+    from {top: -30rem; opacity: 0}
+    to {top: 0; opacity: 1}
+  }
+
+
+  .ui-dialog-title {
+    color: red !important;
+  }
+
+
+

@@ -1,0 +1,17 @@
+<div class="container">
+
+    <app-header (bookingTypeSearchInputChange)="getBookingSubject($event)"></app-header>
+
+    <div class="content">
+
+      <nav class="sidebar">
+        <app-sidebar (bookingSubjectChange)="updateBookingSubject($event)"></app-sidebar>
+      </nav>
+
+      <main class="hotel-view">
+
+      </main>
+
+    </div>
+
+  </div>

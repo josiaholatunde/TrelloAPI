@@ -1,0 +1,67 @@
+//CTA
+.cta {
+  padding: 3.5rem 0;
+  background: #fff;
+  &__book-now {
+      font-weight: 300;
+      font-size: 1.5rem;
+      margin-bottom: 2.5rem;
+      text-transform: uppercase;
+      @media only screen and (max-width: 46rem) {
+          margin-bottom: 2rem;
+      }
+
+  }
+  @media only screen and (max-width: 46rem) {
+      padding: 2rem 0;
+
+  }
+
+}
+
+
+
+
+.btn {
+  border: none;
+  font-size: 1.5rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  border-radius: 10rem;
+  background-image: linear-gradient(to right, var(--color-primary-light), var(--color-primary-dark));
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  & > *{
+      transform: all .2s;
+      width: 100%;
+      height: 100%;
+  }
+  &__visible {
+      display: inline-block;
+      padding: 2rem 7.5rem;
+  }
+  &__invisible {
+      display: inline-block;
+      padding: 2rem 0rem;
+      position: absolute;
+      top: -100%;
+      left: 0;
+  }
+  &:hover &__invisible {
+      top: 0;
+  }
+  &:hover &__visible {
+     transform: translateY(-100%);
+  }
+  &:hover{
+      background-image: linear-gradient(to left, var(--color-primary-light), var(--color-primary-dark));
+  }
+
+  &:focus {
+      outline: none;
+      animation: pulsate .2s infinite;
+  }
+}
+

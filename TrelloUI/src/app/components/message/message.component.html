@@ -1,0 +1,57 @@
+<div class="con">
+  <div class="message-container-btn-group">
+    <button class="btn btn-success" (click)="loadMessages('Inbox')">Inbox</button>
+    <button class="btn btn-warning btn-mid" (click)="loadMessages('Outbox')">Outbox</button>
+    <button class="btn btn-success"  (click)="loadMessages('Unread')">Unread</button>
+  </div>
+
+  <div class="no-message" *ngIf="messages.length === 0">
+      <h3>No Messages to display!</h3>
+  </div>
+
+  <div class="message-list">
+    <div class="message-list__text-header">Message</div>
+    <div class="message-list__text-header">From/To</div>
+    <div class="message-list__text-header">Sent/Received</div>
+    <div class="message-list__text-header">Delete</div>
+  </div>
+
+  <div class="message-list message-list__clickable" *ngFor="let m of messages"
+    [routerLink]="['/users/messages', messageContainer == 'Outbox' ? m.recipientId : m.senderId]">
+
+    <div class="inbox-unread" *ngIf="messageContainer == 'Outbox'">
+      <div class="message-list__text">{{m.messageContent}}</div>
+      <div class="message-list__text">
+        <img [src]="m.recipientPhotoUrl" alt="{{m.recipientKnownAs}}" class="img-circle">
+        <strong> {{m.recipientKnownAs}} </strong>
+      </div>
+      <div class="message-list__text">{{ m.dateSent | timeAgo}}</div>
+      <div class="message-list__text">
+          <button class="btn btn-success" (click)="deleteMessage(m)">Delete</button>
+      </div>
+    </div>
+
+    <div class="outbox" *ngIf="messageContainer != 'Outbox'">
+      <div class="message-list__text">{{m.messageContent}}</div>
+      <div class="message-list__text">
+          <img [src]="m.senderPhotoUrl" alt="{{m.senderKnownAs}}" class="img-circle">
+          <strong> {{m.senderKnownAs}} </strong>
+      </div>
+      <div class="message-list__text">{{ m.dateSent | timeAgo}}</div>
+      <div class="message-list__text">
+         <button class="btn btn-success" (click)="deleteMessage(m)">Delete</button>
+      </div>
+    </div>
+  </div>
+  <div class="justify-center">
+      <p-paginator
+      [rows]="10"
+      name="currentPage"
+      [(ngModel)]="pagination.currentPage"
+      (pageChanged)="pageChanged($event)"
+       [totalRecords]="pagination.totalItems"
+       [rowsPerPageOptions]="[pagination.itemsPerPage]"
+       ngDefaultControl>
+      </p-paginator>
+  </div>
+</div>

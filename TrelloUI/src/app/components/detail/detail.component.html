@@ -1,0 +1,53 @@
+<div class="detail">
+    <div class="arrow-nav-left" [ngClass]="{'greyButton': greyLeftButton}">
+        <i class="fa fa-angle-left fa-4x" (click)="loadPrevBookingSubject()"></i>
+    </div>
+    <div class="description">
+        <p class="paragraph">
+           {{ bookingSubject.mainDescription }}
+        </p>
+        <p class="paragraph">
+          {{ bookingSubject.subDescription }}
+        </p>
+         <ul class="list">
+             <li class="list__item" *ngFor="let feature of bookingSubject.features"> {{ feature.title }} </li>
+         </ul>
+         <div class="recommend">
+             <p class="recommend__count" *ngIf="bookingSubject.noOfRecommendations > 0">
+                 {{ nameOfRecommender }} and {{ bookingSubject.noOfRecommendations - 1}}  recommend this {{ bookingType }}
+             </p>
+             <p *ngIf="bookingSubject.noOfRecommendations === 0"> No one recommends this</p>
+             <div class="recommend__friends">
+                 <img src="../../../assets/img/user-3.jpg" alt="User 3" class="recommend__photo">
+                 <img src="../../../assets/img/user-4.jpg" alt="User 4" class="recommend__photo">
+                 <img src="../../../assets/img/user-5.jpg" alt="User 5" class="recommend__photo">
+                 <img src="../../../assets/img/user-6.jpg" alt="User 6" class="recommend__photo">
+             </div>
+         </div>
+    </div>
+    <div class="user-reviews">
+        <div *ngIf="bookingSubject.comments.length > 0">
+          <figure class="review" *ngFor="let comment of bookingSubject.comments">
+            <blockquote class="review__text">
+              {{ comment.description }}
+            </blockquote>
+            <figcaption class="review__user">
+                <img [src]="comment.photoUrl || getDefaultPhotoUrl()" class="review__photo" alt="User Photo" />
+                <div class="review__user-box">
+                    <p class="review__user-name">{{ comment.fullName }}</p>
+                    <p class="review__user-date">{{ comment.dateCommented | date: 'mediumDate'}}</p>
+                </div>
+                <div class="review__user-rating">{{ comment.rating }}</div>
+            </figcaption>
+        </figure>
+        </div>
+         <button class="btn-inline overview__btn">Show All<span>&rarr;</span></button>
+         <button class="btn-inline overview__btn btn-review" *ngIf="isLoggedIn" (click)="showDialog()">Add Review
+           <i class="fa fa-pencil"></i>
+         </button>
+    </div>
+    <div class="arrow-nav-right" [ngClass]="{'greyButton': greyRightButton}">
+      <i class="fa fa-angle-right arrow-style fa-4x" (click)="loadNextBookingSubject()"></i>
+    </div>
+</div>
+<app-user-comment [passDisplay]="display" [bookingId]="bookingSubject.id"></app-user-comment>

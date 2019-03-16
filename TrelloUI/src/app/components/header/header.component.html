@@ -1,0 +1,59 @@
+<header class="header flex-con">
+    <img src="../assets/img/logo.png" alt="trillo" class="logo">
+    <form  class="search" (ngSubmit)="getBookingSubjects()" #searchFormControl="ngForm" >
+        <p-autoComplete [(ngModel)]="searchParams"
+            name="searchParams"
+            [suggestions]="bookingSubjects"
+            class="search__box"
+            (completeMethod)="filterBookingSubject($event)"
+            field="name"
+            [size]="44"
+            placeholder="Search your {{ bookingType }} by Name, City or Location"
+            [minLength]="1"
+            >
+        </p-autoComplete>
+        <button class="search__button" type="submit">
+         <svg class="search__icon">
+             <use xlink:href="../assets/img/sprite.svg#icon-magnifying-glass"></use>
+         </svg>
+        </button>
+     </form>
+     <nav class="user-nav" *ngIf="isLoggedIn">
+         <div class="user-nav__icon-box">
+             <svg class="user-nav__icon">
+                 <use xlink:href="../assets/img/sprite.svg#icon-bookmark"></use>
+             </svg>
+             <span class="user-nav__notification">7</span>
+         </div>
+         <div class="user-nav__icon-box" [routerLink]="['users/messages']">
+             <svg class="user-nav__icon">
+                 <use xlink:href="../assets/img/sprite.svg#icon-chat"></use>
+             </svg>
+             <span class="user-nav__notification"> {{notificationCount || 0}}  </span>
+         </div>
+         <div class="user-nav__user">
+             <img [src]="loggedInUser.photoUrl || defaultPhotoUrl" alt="User photo" class="user-nav__user-photo">
+             <span class="user-nav__user-name">{{ loggedInUser.userName | titlecase }}</span>
+             <div class="dropdown-content">
+               <a [routerLink]="['/photo/upload']" class="dropdown-item">Upload Photo</a>
+             </div>
+         </div>
+         <div class="user-nav__user">
+           <span class="user-nav__user-name" (click)="logout()">Logout</span>
+        </div>
+     </nav>
+     <nav class="user-nav" *ngIf="!isLoggedIn">
+        <div class="user-nav__icon-box">
+            <a [routerLink]="['/login']" class="user-nav__auth">
+              Login
+            </a>
+        </div>
+        <div class="user-nav__icon-box">
+            <a [routerLink]="['/register']" class="user-nav__auth">
+              Register
+            </a>
+        </div>
+    </nav>
+  </header>
+
+

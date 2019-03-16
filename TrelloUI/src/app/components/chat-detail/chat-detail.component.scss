@@ -1,0 +1,94 @@
+.con {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 1.5rem;
+  background: white;
+  height: 100%;
+}
+.chat-container {
+  width: 80%;
+  padding: 2rem;
+  align-self: center;
+ // background: var(--grey-dark-2);
+}
+.align-up {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  height: 100%;;
+}
+
+.sender-container,
+.recipient-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px dotted orangered;
+
+  .img-photo {
+    height: 3.5rem;
+    border-radius: 50%;
+  }
+}
+
+.flex {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.flex-o {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  .time-det{
+    align-self: flex-start;
+  }
+}
+.msg-det{
+  padding: 1rem;
+  .name {
+    text-align: left;
+    font-weight: bolder;
+  }
+  .message {
+    font-size: 1.6rem;
+  }
+}
+
+.time-det{
+  align-self: flex-start;
+}
+.chat-footer{
+  padding: 1rem;
+  align-self: stretch;
+  .text-input{
+    width: 92%;
+    padding: .3rem;
+    border: 1px solid blue;
+  }
+  .text-input:focus {
+    outline: none;
+  }
+  input.btn {
+    height: 100%;
+    padding: .3rem;
+    color: white;
+    margin-left: .3rem;
+    background: orangered;
+    border: 1px solid orangered;
+  }
+  input.btn:focus {
+    outline: none;
+  }
+}
+.text-unread {
+  color: orangered;
+}
+.text-read {
+  color: green;
+}
+

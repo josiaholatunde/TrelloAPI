@@ -1,0 +1,94 @@
+<p-dialog header="Create Booking" [(visible)]="passDisplay" [modal]="true" [responsive]="true"
+[contentStyle]="{width: '550px', minWidth: '400px', maxHeight: '500px'}" [draggable]="false"
+[minY]="70" [baseZIndex]="10000">
+
+<form class="login-form" [formGroup]="createBookingGroup" (ngSubmit)="createBooking()" >
+  <div class="form-group animation-group">
+    <label class="login-form__label">Name</label>
+    <input type="text" class="login-form__input" formControlName="name">
+    <span class="error-feedback" *ngIf="createBookingGroup.get('name').hasError('required') &&
+      createBookingGroup.get('name').touched">
+        Name field is required
+    </span>
+  </div>
+  <div class="form-group animation-group">
+    <label class="login-form__label">Booking Type</label>
+    <select class="login-form__input" formControlName="bookingSubjectType" >
+      <option *ngFor="let type of bookingType" [value]="type.value"> {{type.display}} </option>
+      </select>
+  </div>
+  <div class="form-group animation-group">
+    <label class="login-form__label">Main Description</label>
+    <textarea  class="login-form__textarea" formControlName="mainDescription" rows="5">
+    </textarea>
+    <span class="error-feedback-textarea" *ngIf="createBookingGroup.get('mainDescription').hasError('required') &&
+    createBookingGroup.get('mainDescription').touched">
+        Main Description field is required
+    </span>
+    <span class="error-feedback-textarea-1" *ngIf="createBookingGroup.get('mainDescription').hasError('minlength') &&
+    createBookingGroup.get('mainDescription').touched">
+        No of characters must not be less than 272
+    </span>
+    <span class="error-feedback-textarea-2" *ngIf="createBookingGroup.get('mainDescription').hasError('maxlength') &&
+    createBookingGroup.get('mainDescription').touched">
+        No of characters must not be greater than 276
+    </span>
+  </div>
+  <div class="form-group animation-group">
+      <label class="login-form__label">Additional Description</label>
+      <textarea  class="login-form__textarea" formControlName="subDescription" rows="5">
+      </textarea>
+      <span class="error-feedback-textarea" *ngIf="createBookingGroup.get('subDescription').hasError('required') &&
+      createBookingGroup.get('subDescription').touched">
+          Additional Description field is required
+      </span>
+  </div>
+  <div class="form-group animation-group">
+      <label class="login-form__label">City</label>
+      <input type="text" class="login-form__input" formControlName="city">
+      <span class="error-feedback" *ngIf="createBookingGroup.get('city').hasError('required') &&
+        createBookingGroup.get('city').touched">
+          City field is required
+      </span>
+  </div>
+  <div class="form-group animation-group">
+      <label class="login-form__label">Country</label>
+      <input type="text" class="login-form__input" formControlName="country">
+      <span class="error-feedback" *ngIf="createBookingGroup.get('country').hasError('required') &&
+        createBookingGroup.get('country').touched">
+          Country field is required
+      </span>
+  </div>
+  <div class="form-group animation-group">
+      <label class="login-form__label">Features</label>
+      <textarea  class="login-form__textarea" formControlName="bookingFeatures" rows="5">
+      </textarea>
+      <span class="error-feedback-textarea" *ngIf="createBookingGroup.get('bookingFeatures').hasError('required') &&
+      createBookingGroup.get('bookingFeatures').touched">
+          Features field is required
+      </span>
+  </div>
+  <div class="form-group animation-group">
+      <label class="login-form__label">Total number of BookingSubjects</label>
+      <input type="number"  class="login-form__input" formControlName="totalBookingSubjects">
+      <span class="error-feedback" *ngIf="createBookingGroup.get('totalBookingSubjects').hasError('required') &&
+      createBookingGroup.get('totalBookingSubjects').touched">
+          Total BookingSubjects field is required
+      </span>
+  </div>
+  <div class="form-group animation-group">
+      <label class="login-form__label">Number of BookingSubjects Left</label>
+      <input type="number"  class="login-form__input" formControlName="noOfBookingSubjectsLeft">
+      <span class="error-feedback" *ngIf="createBookingGroup.get('noOfBookingSubjectsLeft').hasError('required') &&
+      createBookingGroup.get('noOfBookingSubjectsLeft').touched">
+      No of Booking SubjectsLeft  field is required
+      </span>
+  </div>
+
+<p-footer>
+    <input type="submit"
+    [disabled]="createBookingGroup.invalid"
+      [ngClass]="createBookingGroup.invalid ? 'invalid': 'login-form__btn login-form__btn-block'" value="Create Booking">
+  </p-footer>
+</form>
+</p-dialog>

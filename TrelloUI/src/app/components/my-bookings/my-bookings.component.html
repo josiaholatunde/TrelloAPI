@@ -1,0 +1,14 @@
+  <div class="container">
+    <div class="card" *ngFor="let booking of bookingSubjects">
+      <img src="../../../assets/img/hotel-1.jpg" alt="Booking 1" class="card__img">
+      <div class="card-body">
+        <h2 class="card__title"> {{booking.name}} </h2>
+        <h2>{{booking.city}}, {{booking.country}}</h2>
+        <h2>Created: 23rd Jan, 2019</h2>
+      </div>
+      <div class="card__footer">
+        <a class="btn btn-edit" [routerLink]="['/bookings/edit', booking.id]" >Edit</a>
+        <a class="btn btn-delete" (click)="deleteBooking(booking)">Delete</a>
+      </div>
+    </div>
+  </div>

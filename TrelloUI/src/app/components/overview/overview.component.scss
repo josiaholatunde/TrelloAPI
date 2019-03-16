@@ -1,0 +1,109 @@
+.overview {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--grey-dark-2);
+  background: #fff;
+  &__heading {
+      font-size: 2rem;
+      font-weight: 300;
+      padding: 1.5rem 3rem;
+      @media only screen and (max-width: 35rem) {
+        padding: 1rem 2rem;
+      }
+      @media only screen and (max-width: 32rem) {
+        font-size: 1.4rem;
+      }
+  }
+  &__rating {
+      background: var(--color-primary);
+      margin-left: 3rem;
+      color: #fff;
+      align-self: stretch;
+      padding: 0 2.3rem;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      &-average {
+          font-size: 2rem;
+      }
+      &-count {
+          font-size: .8rem;
+          text-transform: uppercase;
+      }
+      @media only screen and (max-width: 35rem) {
+        padding: 0 1.3rem;
+      }
+  }
+  &__stars {
+      margin-right: auto;
+      display: flex;
+      align-items: center;
+
+
+  }
+  &__icon-star,
+  &__icon-location {
+      height: 1.75rem;
+      width: 1.75rem;
+      fill: var(--color-primary);
+      cursor: pointer;
+  }
+  &__location {
+      display: flex;
+      align-items: center;
+      font-size: 1.2rem;
+      margin-right: .5rem;
+
+  }
+
+}
+
+//Overview
+.btn-inline {
+  border: none;
+  color: var(--color-primary);
+  border-bottom: 1px solid currentColor;
+  font-size: inherit;
+  cursor: pointer;
+  display: inline-block;
+  padding-bottom: 2px;
+  background: transparent;
+  transition: all .2s;
+  @media only screen and (max-width: 46rem) {
+     margin-top: -2rem;
+  }
+  @media only screen and (max-width: 42rem) {
+    margin-top: 0;
+  }
+
+  & span {
+      margin-left: 3px;
+  }
+  &:hover {
+      outline: none;
+      color: var(--grey-dark-1);
+      span {
+          margin-left: 8px;
+      }
+  }
+
+  &:focus {
+      animation: pulsate 1s infinite;
+  }
+}
+@keyframes pulsate {
+  0% {
+      transform: scale(1);
+      box-shadow: none;
+  }
+  50% {
+      transform: scale(1.05);
+      box-shadow: 0px 2rem 4px rba(0, 0, 0, .25);
+  }
+  100% {
+      transform: scale(1);
+      box-shadow: none;
+  }
+}
+

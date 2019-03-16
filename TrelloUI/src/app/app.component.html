@@ -1,0 +1,17 @@
+<div class="container">
+
+    <app-header (bookingTypeSearchInputChange)="getBookingSubject($event)" (bookingSubjectChange)="updateBookingSubject($event)"
+    [isLoggedInStatusProperty]="isLoggedInStatus">
+    </app-header>
+
+    <div class="content">
+      <nav class="sidebar">
+        <app-sidebar [routeParams]="routeParams" (bookingSubjectChange)="updateBookingSubject($event)" (bookingTypeChange)="updateBookingType($event)"
+        (isLoggedInAndRegisterChange)="reset($event)" (isCreatedBookingChange)="openModal($event)"></app-sidebar>
+      </nav>
+      <main class="hotel-view" *ngIf="!isLoginClicked && !isRegisterClicked">
+        <router-outlet></router-outlet>
+      </main>
+    </div>
+    <app-create-booking [passDisplay]="display"></app-create-booking>
+  </div>

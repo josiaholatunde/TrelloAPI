@@ -1,0 +1,18 @@
+<div class="overview" *ngIf="bookingSubject">
+    <h1 class="overview__heading">{{ bookingSubject.name | titlecase }}</h1>
+    <div class="overview__stars">
+         <svg class="overview__icon-star" *ngFor="let count of starsCount">
+             <use xlink:href="../../../assets/img/sprite.svg#icon-star"></use>
+          </svg>
+    </div>
+    <div class="overview__location">
+         <svg class="overview__icon-location">
+             <use xlink:href="img/sprite.svg#icon-location-pin"></use>
+         </svg>
+         <button class="btn-inline overview__btn">{{ bookingSubject.city }}, {{ bookingSubject.country }}</button>
+    </div>
+    <div class="overview__rating">
+        <div class="overview__rating-average"> {{ bookingSubject.avgRating | number: '1.1-1' || 0 }} </div>
+        <div class="overview__rating-count"> {{ bookingSubject.noOfVoters }} votes </div>
+    </div>
+</div>

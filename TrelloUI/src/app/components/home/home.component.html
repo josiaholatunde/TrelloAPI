@@ -1,0 +1,7 @@
+    <app-gallery></app-gallery>
+    <app-overview *ngIf="currentBookingSubject" [bookingSubject]="currentBookingSubject"></app-overview>
+    <app-detail *ngIf="currentBookingSubject && bookingSubject"
+      (bookingSubjectChange)="updateIndividualBookingSubject($event)"  [bookingSubject]="currentBookingSubject"
+      [allBooking]="bookingSubject" >
+  </app-detail>
+    <app-cta *ngIf="currentBookingSubject" [bookingSubject]="currentBookingSubject"></app-cta>
