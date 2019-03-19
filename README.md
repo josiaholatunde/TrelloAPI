@@ -11,4 +11,6 @@ Users can also upload their photos and chat with other registered users.
 The Application uses JWT token authentication to ensure that only logged in users have access to admin and user roles.
 The pictures of users are stored using cloudinary's API.
 
+The Application has methods to seed random users alongside dummy comments, bookings, features, etc.
+
 The application's front end was written in ANGULAR 6 while the Web API was written with ASPNETCORE 2.1
