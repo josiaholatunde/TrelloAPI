@@ -53,6 +53,7 @@
           background: var(--light-grey-1)
       }
   }
+  
   &__icon {
       height: 2rem;
       width: 2rem;
@@ -84,26 +85,31 @@
   align-items: center;
   position: relative;
   & > * {
-      margin: 0 1.6rem;
+      padding: 0 1.6rem;
       cursor: pointer;
       align-self: stretch;
       height: 100%;
+      width: 100%;
       display: flex;
       align-items: center;
       @media only screen and (max-width: 35rem) {
-        margin: 0 1.2rem;
+        padding: 0 1.2rem;
       }
-
   }
-
   & > *:hover {
       background: var(--grey-dark-2);
+      color: white;
   }
+ 
   & > *:hover .user-nav__icon {
       fill: #fff;
   }
   &__icon-box {
      position: relative;
+    
+  }
+  &__icon-box:focus {
+     outline: none;
   }
   &__icon {
       height: 2rem;
@@ -128,12 +134,17 @@
       justify-content: center;
       position: absolute;
       top: 1.8rem;
-      left: 1.5rem;
+      left: 2.7rem;
   }
   &__auth {
     color: var(--color-primary);
     text-transform: uppercase;
   }
+ 
+}
+
+.user-nav__user {
+  position: relative;
 }
 
 .ui-autocomplete-list-item {
@@ -146,7 +157,9 @@
 .dropdown-content{
   display: none;
   position: absolute;
-  top: 6.8rem;
+  top: 6.9rem;
+  left: 0;
+  width: 100%;
   background: var(--color-primary);
   min-width: 6rem;
   box-shadow: 0 .8rem 1.6rem rgba(0, 0, 0, .2);

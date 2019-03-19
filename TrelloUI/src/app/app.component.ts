@@ -23,13 +23,8 @@ export class AppComponent implements OnInit, OnDestroy {
   currentBookingSubject: BookingSubject;
   constructor(private bookingService: BookingSubjectService, private route: ActivatedRoute,
     private router: Router) {
-  /*   this.book = this.route.url.subscribe(res => {
-      console.log('I changed', res);
-      this.bookingType = BookingSubjectType[res[1].path];
-    }); */
   }
   ngOnInit(): void {
-    console.log('home oninit');
 
     if (this.router.url === '/login') {
       this.isRegisterClicked = false;
@@ -62,14 +57,15 @@ export class AppComponent implements OnInit, OnDestroy {
   updateBookingSubject($event: any) {
     this.bookingSubject = $event;
     this.currentBookingSubject = this.bookingSubject[0];
-    console.log('From Home ', this.bookingSubject);
-    console.log('From Home Alone', this.bookingSubject[0]);
+  }
+  updateBookingSubjectViaSearch($event) {
+    this.currentBookingSubject = $event;
+    this.bookingService.changeBookingSubject(this.currentBookingSubject);
+
   }
   loadBookingSubjects($event?: any) {
-     console.log('Typeee', this.bookingType);
      this.bookingService.getBookingSubjects(this.bookingType, $event).subscribe((res: BookingSubject[]) => {
        this.bookingSubject = res;
-       console.log('Res', res);
        this.currentBookingSubject = res[0];
      });
    }
@@ -85,7 +81,6 @@ export class AppComponent implements OnInit, OnDestroy {
     this.isLoginClicked = false;
     this.isRegisterClicked = false;
     this.isLoggedInStatus = true;
-    console.log(' I came', this.isLoggedInStatus);
   }
   log($event) {
     this.passOn = $event;

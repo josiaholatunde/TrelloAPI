@@ -1,3 +1,5 @@
+@import "../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+
 .con {
   display: flex;
   flex-flow: column wrap;
@@ -5,16 +7,29 @@
   justify-content: flex-start;
   padding: 1.5rem;
   background: white;
-  height: 100%;
+  min-height: 100vh;
+  width: 100%;
 }
+
+table th {
+  font-size: 1.7em;
+}
+table td {
+  font-size: 1.5em;
+}
+
+
 
 .btn {
   text-transform: uppercase;
   color: #fff;
   padding: 1rem;
-  height: 70%;
+  height: 100%;
   display: inline-block;
   cursor: pointer;
+}
+.btn:hover {
+  color: white;
 }
 .btn:focus {
   outline: none;
@@ -33,10 +48,24 @@
   border: 1px solid var(--color-primary);
 
 }
+.btn-success:hover {
+  background: var(--color-primary);
+  border: 1px solid var(--color-primary);
+
+}
 .btn-warning {
   background: rgba(0, 0, 0, .7);
   border: 1px solid rgba(0, 0, 0, .7);
 
+}
+.btn-warning:hover {
+  background: rgba(0, 0, 0, .7);
+  border: 1px solid rgba(0, 0, 0, .7);
+
+}
+.btn:active, .btn:focus {
+  outline: none;
+  box-shadow: none !important;
 }
 
 .message-list, .inbox-unread, .outbox {

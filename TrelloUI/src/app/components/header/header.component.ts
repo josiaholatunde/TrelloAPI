@@ -12,11 +12,11 @@ import { AlertifyService } from 'src/app/services/alertify.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
-
-  searchParams: any = {};
+export class HeaderComponent implements OnInit, OnChanges {
+  searchParams: any;
   @Output() bookingTypeSearchInputChange = new EventEmitter();
   @Output() bookingSubjectChange = new EventEmitter();
+  @Output() bookingSubjectChangeViaSearchInput = new EventEmitter();
 
   @Input() isLoggedInStatusProperty;
   @Input() propertyToPassOn: any;
@@ -32,6 +32,8 @@ export class HeaderComponent implements OnInit {
   routePath: string;
   defaultPhotoUrl: string;
   notificationCount: number;
+  bookingSubjectSuggestion: any[];
+
   constructor(private route: ActivatedRoute, private router: Router, private bookingService: BookingSubjectService,
     private alertifyService: AlertifyService, private userService: UserService, private messageService: MessageService) {
    }
@@ -60,17 +62,22 @@ export class HeaderComponent implements OnInit {
     this.route.paramMap.subscribe(param => {
       if (param['status']) {
         this.isLoggedIn = true;
-        console.log('ogo', param['status']);
       }
-      console.log('I didnt run', param['status']);
     });
     if (this.router.url.endsWith('true')) {
         this.isLoggedIn = true;
         const user = JSON.parse(localStorage.getItem('user'));
         this.loggedInUser = user;
       }
-      console.log('I executed');
   }
+
+  ngOnChanges(changes: SimpleChanges): void {
+     this.userService.defaultLoggedInStatus.subscribe(status => {
+      this.loggedInUser = this.userService.getLoggedInUser();
+      this.isLoggedIn = status;
+    });
+  }
+
   setBookingType(): any {
     if (this.paramName === 'Hotel') {
       this.bookingType = BookingSubjectType[BookingSubjectType.Hotel];
@@ -88,11 +95,18 @@ export class HeaderComponent implements OnInit {
   filterBookingSubject(event) {
     const query = event.query;
     // type from route params
-    const bookingType = BookingSubjectType.Hotel;
-    this.bookingService.getBookingSubjects(bookingType, query).subscribe((res: BookingSubject[]) => {
-      this.bookingSubjects = res;
-      console.log(res);
+    this.bookingService.defaultBookingType.subscribe(bookingType => {
+      this.bookingService.getBookingSubjects(bookingType, query).subscribe((res: BookingSubject[]) => {
+        const bookingSubjectSuggestion = [];
+        res.forEach(r => {
+          bookingSubjectSuggestion.push(r.bookingSubjectResultString);
+        });
+        this.bookingSubjectSuggestion = bookingSubjectSuggestion;
+        this.bookingSubjects = res;
+  
+      });
     });
+
   }
   getBookingSubjects() {
     this.bookingTypeSearchInputChange.emit(this.searchParams.name);
@@ -102,7 +116,7 @@ export class HeaderComponent implements OnInit {
     this.userService.changeLoggedInStatus(false);
     localStorage.removeItem('token');
     localStorage.removeItem('user');
-    this.router.navigate(['home'])
+    this.router.navigate(['home']);
     this.alertifyService.success('Logged out successfully');
   }
   getDefaultPhoto() {
@@ -110,6 +124,11 @@ export class HeaderComponent implements OnInit {
   }
   getUnreadNotifications() {
     this.messageService.getNotificationCount().subscribe(res => this.notificationCount = res);
+  }
+
+  changeBooking() {
+    const bookingToChangeTo = this.bookingSubjects.find(b => b.bookingSubjectResultString === this.searchParams);
+    this.bookingSubjectChangeViaSearchInput.emit(bookingToChangeTo);
   }
 
 }

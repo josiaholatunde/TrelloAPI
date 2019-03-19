@@ -9,14 +9,17 @@ export class ErrorInterceptor implements HttpInterceptor {
     return next.handle(req).pipe(
       catchError(error => {
         if (error instanceof HttpErrorResponse) {
+          //Unaurhroized errors
           if (error.status === 401) {
             return throwError(error.statusText);
           }
+          //Bad Request Errors or thrown exceptions on the server
           const applicationError = error.headers.get('Application-Error');
           if (applicationError ) {
-            console.log('App Err', applicationError);
             return throwError(applicationError);
           }
+
+          //Model state errors
           const serverError = error.error;
           let modelStateError = '';
           if (serverError && typeof( serverError) === 'object') {

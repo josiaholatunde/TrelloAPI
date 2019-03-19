@@ -1,15 +1,15 @@
 <header class="header flex-con">
     <img src="../assets/img/logo.png" alt="trillo" class="logo">
-    <form  class="search" (ngSubmit)="getBookingSubjects()" #searchFormControl="ngForm" >
+    <form  class="search" (ngSubmit)="changeBooking()" #searchFormControl="ngForm" >
         <p-autoComplete [(ngModel)]="searchParams"
             name="searchParams"
-            [suggestions]="bookingSubjects"
+            [suggestions]="bookingSubjectSuggestion"
             class="search__box"
             (completeMethod)="filterBookingSubject($event)"
-            field="name"
             [size]="44"
             placeholder="Search your {{ bookingType }} by Name, City or Location"
             [minLength]="1"
+            
             >
         </p-autoComplete>
         <button class="search__button" type="submit">

@@ -1,5 +1,5 @@
 import { ActivatedRoute, Router } from '@angular/router';
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, OnChanges } from '@angular/core';
 import { BookingSubjectService } from '../../services/booking-subject.service';
 import { BookingSubjectType } from '../../models/booking-subject-type';
 import { BookingSubject } from '../../models/booking-subject';
@@ -11,7 +11,8 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomeComponent implements OnInit, OnChanges {
+
   bookingType = BookingSubjectType.Hotel;
   bookingSubject: BookingSubject[];
   currentBookingSubject: BookingSubject;
@@ -21,11 +22,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.bookingSubject = [];
   }
 
-  ngOnDestroy(): void {
-    // throw new Error("Method not implemented.");
-  }
   ngOnInit(): void {
-    // throw new Error("Method not implemented.");
     this.route.params.subscribe(param => {
       if (param['name']) {
        if (param['name'] === 'Hotel') {
@@ -52,14 +49,23 @@ export class HomeComponent implements OnInit, OnDestroy {
      this.bookingService.searchParamsTypeObservable.subscribe($event => {
         this.loadBookingSubjects($event);
      });
+     this.bookingService.defaultSubject.subscribe(bk => {
+      this.currentBookingSubject = bk;
+     });
+  }
+
+  ngOnChanges(changes: import('@angular/core').SimpleChanges): void {
+    this.bookingService.defaultSubject.subscribe(sub => {
+      if (sub) {
+        this.currentBookingSubject = sub;
+      }
+    });
   }
 
   loadBookingSubjects($event?: any) {
     // const test = this.getBookingTypeFromRoute();
-     console.log('Typeee', this.bookingType);
      this.bookingService.getBookingSubjects(this.bookingType, $event).subscribe((res: BookingSubject[]) => {
        this.bookingSubject = res;
-       console.log('Res', res);
        this.currentBookingSubject = res[0];
      });
    }

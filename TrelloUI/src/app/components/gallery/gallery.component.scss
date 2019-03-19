@@ -1,9 +1,9 @@
 
 .gallery {
   display: flex;
-  &__item {
+  flex-direction: row;
+  height: 17rem;
 
-  }
   &__photo {
       display: inline-block;
       width: 100%;

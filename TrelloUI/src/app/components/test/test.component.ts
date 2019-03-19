@@ -20,7 +20,6 @@ export class TestComponent implements OnInit {
   constructor(private bookingService: BookingSubjectService, private alertify: AlertifyService,
     private route: ActivatedRoute) {
     this.route.url.subscribe(res => {
-      console.log('I changed', res[1].path);
       this.bookingType = BookingSubjectType[res[1].path];
     });
    }
@@ -35,7 +34,6 @@ export class TestComponent implements OnInit {
     const bookingType = BookingSubjectType.Hotel;
     this.bookingService.getBookingSubjects(bookingType, query).subscribe((res: BookingSubject[]) => {
       this.bookingSubjects = res;
-      console.log(res);
     });
   }
   selectCar() {
@@ -44,10 +42,8 @@ export class TestComponent implements OnInit {
 
   loadBookingSubjects($event?: any) {
     // const test = this.getBookingTypeFromRoute();
-     console.log('Typeee', this.bookingType);
      this.bookingService.getBookingSubjects(this.bookingType, $event).subscribe((res: BookingSubject[]) => {
        this.bookingSubjects = res;
-       console.log('Res', res);
        this.currentBookingSubject = res[0];
      });
    }

@@ -41,8 +41,10 @@
             </figcaption>
         </figure>
         </div>
-         <button class="btn-inline overview__btn">Show All<span>&rarr;</span></button>
-         <button class="btn-inline overview__btn btn-review" *ngIf="isLoggedIn" (click)="showDialog()">Add Review
+         <a class="btn-inline-mod overview__btn" [routerLink]="['/bookings', bookingType, bookingSubject.id,'comments']">
+          Show All<span>&rarr;</span>
+        </a>
+         <button class="btn-inline-mod overview__btn btn-review" *ngIf="isLoggedIn" (click)="showDialog()">Add Review
            <i class="fa fa-pencil"></i>
          </button>
     </div>
@@ -50,4 +52,4 @@
       <i class="fa fa-angle-right arrow-style fa-4x" (click)="loadNextBookingSubject()"></i>
     </div>
 </div>
-<app-user-comment [passDisplay]="display" [bookingId]="bookingSubject.id"></app-user-comment>
+<app-user-comment [passDisplay]="display" [bookingId]="bookingSubject.id" (passDisplayOutputChange)="updateDisplay($event)"></app-user-comment>

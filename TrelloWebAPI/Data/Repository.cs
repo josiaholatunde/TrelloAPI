@@ -59,7 +59,7 @@ namespace TrelloWebAPI.Data
                 bookingSubject = bookingSubject.Where(b => b.BookingType == BookingSubjectType.Hotel);
 
             
-            
+            bookingSubject = bookingSubject.Where(b => b.GalleryPictures.Count >= 3);
             return await PagedList<BookingSubject>.CreateAsync(bookingSubject, searchparams.PageSize, searchparams.PageNumber);
         }
 
@@ -150,6 +150,7 @@ namespace TrelloWebAPI.Data
         public async Task<IEnumerable<BookingSubject>> GetUserBookings(int userId)
         {
            var userBookings =await _context.BookingSubjects
+                                        .Include(bk => bk.GalleryPictures)
                                         .Where(bk => bk.UserId == userId)
                                         .ToListAsync();
             return userBookings;

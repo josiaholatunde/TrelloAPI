@@ -18,7 +18,6 @@ export class RegisterComponent implements OnInit {
   }
   register() {
     this.userService.registerUser(this.userForRegisterDto).subscribe(res => {
-      console.log('user', res);
       this.alertify.success('Registeration was successful');
     }, err => this.alertify.error(err), () => {
       this.registerationFormControl.reset();

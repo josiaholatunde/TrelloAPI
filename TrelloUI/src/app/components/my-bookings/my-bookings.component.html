@@ -1,6 +1,6 @@
   <div class="container">
     <div class="card" *ngFor="let booking of bookingSubjects">
-      <img src="../../../assets/img/hotel-1.jpg" alt="Booking 1" class="card__img">
+      <img src="{{booking.mainPhotoUrl || defaultPhotoUrl}}" alt="Booking 1" class="card__img">
       <div class="card-body">
         <h2 class="card__title"> {{booking.name}} </h2>
         <h2>{{booking.city}}, {{booking.country}}</h2>

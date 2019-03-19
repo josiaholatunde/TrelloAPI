@@ -34,7 +34,6 @@ export class MessageService {
         .pipe(
           map(res => {
             paginationResult.result = res.body;
-            console.log('Pagination Headers', res.headers.get('Pagination'));
             if (res.headers.get('Pagination') !== null) {
               paginationResult.pagination = JSON.parse(res.headers.get('Pagination'));
             }

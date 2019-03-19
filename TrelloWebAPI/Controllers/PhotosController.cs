@@ -96,6 +96,8 @@ namespace TrelloWebAPI.Controllers
             }
             photoToCreateDto.Url = uploadResult.Uri.ToString();
             photoToCreateDto.PublicId = uploadResult.PublicId;
+            if (bookingFromRepo.GalleryPictures.Count == 0)
+                photoToCreateDto.IsMain = true;
        
             var fileToUpload =  _mapper.Map<GalleryPicture>(photoToCreateDto);
             bookingFromRepo.GalleryPictures.Add(fileToUpload);
@@ -121,7 +123,9 @@ namespace TrelloWebAPI.Controllers
                 return BadRequest("Booking does not exist");
             var photoFromRepo = await _repository.GetGalleryPhoto(bookingId, photoId);
             if(photoFromRepo == null)
-                 return BadRequest("Photo does not exist");
+                return BadRequest("Photo does not exist");
+            if (photoFromRepo.IsMain)
+                return BadRequest("You can not delete the main photo");
             if (photoFromRepo.PublicId != null)
             {
                 var deletionParams = new DeletionParams(photoFromRepo.PublicId);

@@ -1,4 +1,4 @@
-    <app-gallery></app-gallery>
+    <app-gallery *ngIf="currentBookingSubject" [bookingSubjectPhotos]="currentBookingSubject.galleryPictures"></app-gallery>
     <app-overview *ngIf="currentBookingSubject" [bookingSubject]="currentBookingSubject"></app-overview>
     <app-detail *ngIf="currentBookingSubject && bookingSubject"
       (bookingSubjectChange)="updateIndividualBookingSubject($event)"  [bookingSubject]="currentBookingSubject"

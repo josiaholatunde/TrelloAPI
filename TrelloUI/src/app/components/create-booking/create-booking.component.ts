@@ -39,7 +39,6 @@ export class CreateBookingComponent implements OnInit {
     });
   }
   createBooking() {
-    console.log(' Ran men');
    if (this.createBookingGroup.valid) {
      const location: any = {};
      const description: any = {};

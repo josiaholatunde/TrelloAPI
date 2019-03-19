@@ -1,9 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BookingSubjectType } from 'src/app/models/booking-subject-type';
 import { BookingSubjectService } from 'src/app/services/booking-subject.service';
 import { AlertifyService } from 'src/app/services/alertify.service';
 import { UserService } from 'src/app/services/user.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-user-comment',
@@ -13,7 +14,9 @@ import { UserService } from 'src/app/services/user.service';
 export class UserCommentComponent implements OnInit {
 
   @Input() passDisplay;
+  @Output() passDisplayOutputChange = new EventEmitter();
   @Input() bookingId;
+  @ViewChild('userCommentControl') userCommentControl: NgForm;
   commentDto: any = {};
   paramName: any;
   bookingType: BookingSubjectType;
@@ -52,6 +55,8 @@ export class UserCommentComponent implements OnInit {
       this.alertify.error(err);
     }, () => {
       this.passDisplay = false;
+      this.passDisplayOutputChange.emit(false);
+      this.userCommentControl.reset();
     });
 
   }

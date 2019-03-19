@@ -41,7 +41,6 @@ export class MessageComponent implements OnInit {
     }
     this.messageService.getMessagesForUser(this.messageContainer, this.pagination.currentPage, this.pagination.itemsPerPage)
     .subscribe(res => {
-      console.log('wwee', res);
       this.messages = res.result;
       this.pagination = res.pagination;
     })
@@ -49,7 +48,6 @@ export class MessageComponent implements OnInit {
   pageChanged(event: any) {
     this.pagination.currentPage = event.page;
     this.loadMessages();
-    console.log('Pg', event.page);
   }
   deleteMessage(m: Message) {
     this.alertify.confirm('Are you sure you want to delete this message? ', () => {

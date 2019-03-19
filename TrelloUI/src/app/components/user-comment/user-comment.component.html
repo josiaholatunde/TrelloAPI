@@ -10,10 +10,10 @@
         <span class="error-feedback-textarea" *ngIf="descriptionControl.invalid && descriptionControl.touched">
             Description field is required
         </span>
-        <span class="error-feedback-textarea" *ngIf="descriptionControl.hasError('minlength') && descriptionControl.touched">
+        <span class="error-feedback-textarea-1" *ngIf="descriptionControl.hasError('minlength') && descriptionControl.touched">
           Comments must not be less than 140 characters
         </span>
-        <span class="error-feedback-textarea" *ngIf="descriptionControl.hasError('minlength') && descriptionControl.touched">
+        <span class="error-feedback-textarea-2" *ngIf="descriptionControl.hasError('minlength') && descriptionControl.touched">
           Comments must not be greater than 175 characters
         </span>
     </div>
@@ -35,7 +35,8 @@
       <p-footer>
         <input type="submit"
         [disabled]="userCommentControl.invalid"
-          [ngClass]="userCommentControl.invalid ? 'invalid': 'login-form__btn login-form__btn-block'" value="Create Comment">
+          [ngClass]="userCommentControl.invalid ? 'invalid login-form__btn-block': 'valid login-form__btn login-form__btn-block'" 
+          value="Create Comment">
       </p-footer>
 </form>
 </p-dialog>

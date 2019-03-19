@@ -216,6 +216,33 @@
       outline: none;
   }
 }
+.btn-inline-mod {
+  border: none;
+  color: var(--color-primary);
+  border-bottom: 1px solid currentColor;
+  font-size: inherit;
+  cursor: pointer;
+  display: inline-block;
+  padding-bottom: 2px;
+  background: transparent;
+  @media only screen and (max-width: 46rem) {
+     margin-top: -2rem;
+  }
+
+  & span {
+      margin-left: 3px;
+  }
+  &:hover {
+      outline: none;
+      color: var(--grey-dark-1);
+      span {
+          margin-left: 8px;
+      }
+  }
+  &:focus {
+    outline: none;
+  }
+}
 @keyframes pulsate {
   0% {
       transform: scale(1);

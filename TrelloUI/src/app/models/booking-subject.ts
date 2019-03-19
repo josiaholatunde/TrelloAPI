@@ -14,6 +14,8 @@ export interface BookingSubject {
   noOfBookingSubjectsLeft: number;
   totalBookingSubjects: number;
   noOfRecommendations: number;
+  mainPhotoUrl: string;
+  bookingSubjectResultString: string;
   bookingType: BookingSubjectType;
   comments: Comment[];
   features: Feature[];

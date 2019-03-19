@@ -26,15 +26,17 @@ export class DetailComponent implements OnInit {
   }
 
   ngOnInit() {
-   // this.bookingSubject.comments = this.bookingSubject.comments[0];
    this.bookingSubject.comments.splice(2, 1000);
-   // this.bookingSubject.comments = [...this.bookingSubject.comments];
-   // this.bookingSubject.comments = this.bookingSubject.comments.splice(0, 2);
+
     this.bookingType = BookingSubjectType[this.bookingSubject.bookingType];
     this.userService.defaultLoggedInStatus.subscribe(status => {
       this.loggedInUser = this.userService.getLoggedInUser();
       this.isLoggedIn = status;
     });
+    if (this.allBooking.length <= 1) {
+      this.greyLeftButton = true;
+      this.greyRightButton = true;
+    }
   }
 
   generateRandomNumber(minValue, maxValue) {
@@ -84,5 +86,8 @@ export class DetailComponent implements OnInit {
   }
   getDefaultPhotoUrl() {
     return this.userService.defPhoto;
+  }
+  updateDisplay($event) {
+    this.display = $event;
   }
 }

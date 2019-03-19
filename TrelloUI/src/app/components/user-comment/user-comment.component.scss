@@ -88,27 +88,23 @@
 .error-feedback {
   font-size: 1.2rem;
   color: red;
-  position: absolute;
   top: 7.6rem;
 }
 
 .error-feedback-textarea {
   font-size: 1.2rem;
   color: red;
-  position: absolute;
   top: 11.3rem;
 }
 .error-feedback-textarea-1 {
   font-size: 1.2rem;
   color: red;
-  position: absolute;
-  top: 12.1rem;
+  top: 12.5rem;
 }
 .error-feedback-textarea-2 {
   font-size: 1.2rem;
   color: red;
-  position: absolute;
-  top: 13.6rem;
+  top: 13.5rem;
 }
 //Dialog Form Button
 .login-form {
@@ -119,7 +115,6 @@
     font-weight: 300;
     text-transform: uppercase;
     border-radius: 3rem;
-    background-image: linear-gradient(to right, var(--color-primary-light), var(--color-primary-dark));
     color: #fff;
     transform: all .2s;
     cursor: pointer;
@@ -127,19 +122,22 @@
       outline: none;
       transform: translateY(-5px);
     }
-    &:hover {
-      background-image: linear-gradient(to left, var(--color-primary-light), var(--color-primary-dark));
-    }
   }
   &__btn-block {
     display: inline-block;
     padding: 1.3rem 1rem;
   }
 }
+.valid {
+  background-image: linear-gradient(to right, var(--color-primary-light), var(--color-primary-dark));
+  &:hover {
+    background-image: linear-gradient(to left, var(--color-primary-light), var(--color-primary-dark));
+  }
+}
 
 .invalid {
-display: none;
+display: inline-block;
+border-radius: 3rem;
+border: 1px solid #c8c8c8;
 }
-.invalid:hover {
-background: white;
-}
+

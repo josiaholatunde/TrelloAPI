@@ -13,69 +13,73 @@ import { PhotoUploadComponent } from '../components/photo-upload/photo-upload.co
 import { MessageComponent } from '../components/message/message.component';
 import { MessageListResolver } from '../resolvers/message-list.resolver';
 import { ChatDetailComponent } from '../components/chat-detail/chat-detail.component';
+import { CommentsListComponent } from '../components/comments-list/comments-list.component';
+import { AuthGuard } from '../guards/auth.guard';
 
 
 const routes: Routes = [
   {
-    path: 'bookings/edit/:id',
-    component: BookingEditComponent,
-    // resolve: [ BookingSubjectResolver ]
-  },
-  {
-    path: 'users/messages',
-    component: MessageComponent,
-    resolve: { messages: MessageListResolver }
-    // resolve: [ BookingSubjectResolver ]
-  },
-  {
-    path: 'users/messages/:id',
-    component: ChatDetailComponent,
-    // resolve: { messages: MessageListResolver }
-    // resolve: [ BookingSubjectResolver ]
-  },
-  {
-    path: 'bookings/:name',
-    component: HomeComponent,
-    // resolve: [ BookingSubjectResolver ]
-  },
-  {
-    path: 'photo/upload',
-    component: PhotoUploadComponent,
-    // resolve: [ BookingSubjectResolver ]
-  },
-  {
-    path: 'bookings/:name/:status',
-    component: HomeComponent,
-    // resolve: [ BookingSubjectResolver ]
-  },
-  {
     path: 'home',
     component: HomeComponent,
-    resolve: [ BookingSubjectResolver ]
   },
-  {
-    path: 'my-bookings',
-    component: MyBookingsComponent,
-   // resolve: [ BookingSubjectResolver ]
-  },
-  {
-    path: 'login',
-    component: LoginComponent,
-    // resolve: [ BookingSubjectResolver ]
-  },
-  {
-    path: 'register',
-    component: RegisterComponent,
-    // resolve: [ BookingSubjectResolver ]
-  },
-  {
-    path: 'test',
-    component: TestComponent
-   // resolve: [ BookingSubjectResolver ]
-  },
-  {path: '', redirectTo: 'home', pathMatch: 'full'},
-  {path: '**', redirectTo: 'home', pathMatch: 'full'},
+      {
+        path: 'bookings/edit/:id',
+        component: BookingEditComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'users/messages',
+        component: MessageComponent,
+        resolve: { messages: MessageListResolver },
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'users/messages/:id',
+        component: ChatDetailComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'bookings/:name',
+        component: HomeComponent,
+      },
+      {
+        path: 'photo/upload',
+        component: PhotoUploadComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'bookings/:name/:id/comments',
+        component: CommentsListComponent,
+      },
+      {
+        path: 'bookings/:name/:status',
+        component: HomeComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'my-bookings',
+        component: MyBookingsComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'login',
+        component: LoginComponent,
+      },
+      {
+        path: 'register',
+        component: RegisterComponent,
+      },
 
+  {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full'
+  },
+    {
+      path: '**',
+      redirectTo: 'home',
+      pathMatch: 'full'
+    },
 ];
 
 @NgModule({

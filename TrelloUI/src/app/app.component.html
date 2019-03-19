@@ -1,6 +1,8 @@
 <div class="container">
 
-    <app-header (bookingTypeSearchInputChange)="getBookingSubject($event)" (bookingSubjectChange)="updateBookingSubject($event)"
+    <app-header (bookingTypeSearchInputChange)="getBookingSubject($event)" 
+    (bookingSubjectChangeViaSearchInput)="updateBookingSubjectViaSearch($event)"
+    (bookingSubjectChange)="updateBookingSubject($event)"
     [isLoggedInStatusProperty]="isLoggedInStatus">
     </app-header>
 

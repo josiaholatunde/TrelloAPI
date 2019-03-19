@@ -41,6 +41,8 @@ import { MessageListResolver } from './resolvers/message-list.resolver';
 import { MessageComponent } from './components/message/message.component';
 import { MessageService } from './services/messages.service';
 import { ChatDetailComponent } from './components/chat-detail/chat-detail.component';
+import { CommentsListComponent } from './components/comments-list/comments-list.component';
+import { AuthGuard } from './guards/auth.guard';
 
 
 const tokenGetter = () => localStorage.getItem('token');
@@ -69,7 +71,8 @@ const tokenGetter = () => localStorage.getItem('token');
     PhotoUploadComponent,
     MessageComponent,
     TimeAgoPipe,
-    ChatDetailComponent
+    ChatDetailComponent,
+    CommentsListComponent
   ],
   imports: [
     BrowserModule,
@@ -100,7 +103,8 @@ const tokenGetter = () => localStorage.getItem('token');
     UserService,
     ErrorInterceptorProvider,
     MessageListResolver,
-    MessageService
+    MessageService,
+    AuthGuard
    ],
   bootstrap: [AppComponent]
 })

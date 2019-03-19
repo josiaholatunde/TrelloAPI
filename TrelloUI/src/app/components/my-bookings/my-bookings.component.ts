@@ -13,6 +13,7 @@ import { UserRole } from 'src/app/models/UserRole';
 export class MyBookingsComponent implements OnInit {
   bookingSubjects: BookingSubject[];
   loggedInUser: any;
+  defaultPhotoUrl = '../../../assets/img/super-hero.png';
 
   constructor(private alertify: AlertifyService, private bookingService: BookingSubjectService,
      private userService: UserService) { }

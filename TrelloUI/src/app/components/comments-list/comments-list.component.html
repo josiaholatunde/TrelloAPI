@@ -1,0 +1,20 @@
+<div class="con">
+  <div class="description">
+    <div class="paragraph" *ngFor="let comment of comments">
+      {{ comment.description }}
+      <div class="flex-con">
+        <div class="review__user-box">
+            <img src="{{ comment.photoUrl || '../../../../../assets/img/user.png"  class="review__img"/>
+            <div class="details-div">
+                <p class="review__user-name">{{ comment.fullName }}</p>
+                <p class="review__user-date"> {{comment.dateCommented | date: 'mediumDate' }} </p>
+            </div>
+        </div>
+        <div class="review__user-rating">
+            {{ comment.rating }}
+          </div>
+      </div>
+
+    </div> 
+</div>
+</div>
