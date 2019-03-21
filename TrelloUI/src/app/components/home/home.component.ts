@@ -3,7 +3,7 @@ import { Component, OnInit, Input, OnDestroy, OnChanges } from '@angular/core';
 import { BookingSubjectService } from '../../services/booking-subject.service';
 import { BookingSubjectType } from '../../models/booking-subject-type';
 import { BookingSubject } from '../../models/booking-subject';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -16,8 +16,9 @@ export class HomeComponent implements OnInit, OnChanges {
   bookingType = BookingSubjectType.Hotel;
   bookingSubject: BookingSubject[];
   currentBookingSubject: BookingSubject;
+  showMessage = false;
 
-  constructor(private bookingService: BookingSubjectService, private userService: UserService,
+  constructor(private bookingService: BookingSubjectService, private userService: UserService, private spinner: NgxSpinnerService,
      private router: Router, private route: ActivatedRoute) {
     this.bookingSubject = [];
   }
@@ -40,6 +41,7 @@ export class HomeComponent implements OnInit, OnChanges {
        if (this.router.url.endsWith('true')) {
          this.userService.changeLoggedInStatus(true);
        }
+        this.spinner.show();
         this.loadBookingSubjects();
       }
       if (this.userService.isUserLoggedIn()) {
@@ -47,6 +49,8 @@ export class HomeComponent implements OnInit, OnChanges {
        }
      });
      this.bookingService.searchParamsTypeObservable.subscribe($event => {
+       this.showMessage = false;
+        this.spinner.show();
         this.loadBookingSubjects($event);
      });
      this.bookingService.defaultSubject.subscribe(bk => {
@@ -65,8 +69,14 @@ export class HomeComponent implements OnInit, OnChanges {
   loadBookingSubjects($event?: any) {
     // const test = this.getBookingTypeFromRoute();
      this.bookingService.getBookingSubjects(this.bookingType, $event).subscribe((res: BookingSubject[]) => {
+       this.spinner.hide();
        this.bookingSubject = res;
        this.currentBookingSubject = res[0];
+       if (this.bookingSubject.length === 0) {
+         this.showMessage = true;
+       } else {
+        this.showMessage = false;
+       }
      });
    }
 

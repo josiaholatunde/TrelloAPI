@@ -1,3 +1,17 @@
+
+    <div>
+        <ngx-spinner
+        bdColor="rgba(51,51,51,0.8)"
+        size="medium"
+        color="#fff"
+        type="ball-spin">
+       <p style="font-size: 20px; color: white">Loading...</p>
+      </ngx-spinner>
+    </div>
+    <div class="con" *ngIf="showMessage">
+        <h1>Sorry! There's currently no booking to display</h1>
+    </div>
+
     <app-gallery *ngIf="currentBookingSubject" [bookingSubjectPhotos]="currentBookingSubject.galleryPictures"></app-gallery>
     <app-overview *ngIf="currentBookingSubject" [bookingSubject]="currentBookingSubject"></app-overview>
     <app-detail *ngIf="currentBookingSubject && bookingSubject"

@@ -4,6 +4,7 @@ import { BookingSubjectService } from 'src/app/services/booking-subject.service'
 import { UserService } from 'src/app/services/user.service';
 import { BookingSubject } from 'src/app/models/booking-subject';
 import { UserRole } from 'src/app/models/UserRole';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-my-bookings',
@@ -15,10 +16,11 @@ export class MyBookingsComponent implements OnInit {
   loggedInUser: any;
   defaultPhotoUrl = '../../../assets/img/super-hero.png';
 
-  constructor(private alertify: AlertifyService, private bookingService: BookingSubjectService,
+  constructor(private alertify: AlertifyService, private bookingService: BookingSubjectService, private spinner: NgxSpinnerService,
      private userService: UserService) { }
 
   ngOnInit() {
+    this.spinner.show();
     if (this.userService.isUserLoggedIn()) {
       this.loggedInUser = this.userService.getLoggedInUser();
         if (this.loggedInUser) {
@@ -33,6 +35,9 @@ export class MyBookingsComponent implements OnInit {
     const loggedInUser = this.userService.getLoggedInUser();
     this.bookingService.getMyBookings(loggedInUser.id).subscribe((res: BookingSubject[]) => {
       this.bookingSubjects = res;
+    }, err => this.alertify.error(err),
+    () => {
+      this.spinner.hide();
     });
   }
   deleteBooking(booking: any) {

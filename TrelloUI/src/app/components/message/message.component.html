@@ -5,11 +5,11 @@
     <button class="btn btn-success"  (click)="loadMessages('Unread')">Unread</button>
   </div>
 
-  <div class="no-message" *ngIf="messages.length === 0">
-      <h3>No Messages to display!</h3>
+  <div class="no-message message-div" *ngIf="messages.length === 0">
+      <h1>No Messages to display!</h1>
   </div>
 
-<table class="table table-hover mt-5">
+<table class="table table-hover mt-5" *ngIf="messages.length > 0">
   <tr>
     <th style="width: 40%">Message</th>
     <th  style="width: 20%">From/To</th>
@@ -43,7 +43,7 @@
   </tr>
 </table>
 
-  <div class="justify-center">
+  <div class="justify-center" *ngIf="messages.length > 0">
       <p-paginator
       [rows]="10"
       name="currentPage"

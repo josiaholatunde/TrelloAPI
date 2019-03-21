@@ -1,6 +1,6 @@
   <div class="container">
-    <div>
-      <h3>No Booking to display</h3>
+    <div class="con" *ngIf="bookingSubjects?.length == 0">
+      <h1>Sorry! There's currently no booking to display</h1>
     </div>
     <div class="card" *ngFor="let booking of bookingSubjects">
       <img src="{{booking.mainPhotoUrl || defaultPhotoUrl}}" alt="Booking 1" class="card__img">

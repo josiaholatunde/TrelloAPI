@@ -103,7 +103,7 @@ export class HeaderComponent implements OnInit, OnChanges {
         });
         this.bookingSubjectSuggestion = bookingSubjectSuggestion;
         this.bookingSubjects = res;
-  
+
       });
     });
 
@@ -129,6 +129,7 @@ export class HeaderComponent implements OnInit, OnChanges {
   changeBooking() {
     const bookingToChangeTo = this.bookingSubjects.find(b => b.bookingSubjectResultString === this.searchParams);
     this.bookingSubjectChangeViaSearchInput.emit(bookingToChangeTo);
+    this.router.navigate(['home']);
   }
 
 }

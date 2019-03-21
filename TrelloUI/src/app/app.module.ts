@@ -11,6 +11,7 @@ import {TabViewModule} from 'primeng/tabview';
 import { FileUploadModule } from 'ng2-file-upload';
 import {TimeAgoPipe} from 'time-ago-pipe';
 import {PaginatorModule} from 'primeng/paginator';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
@@ -43,6 +44,7 @@ import { MessageService } from './services/messages.service';
 import { ChatDetailComponent } from './components/chat-detail/chat-detail.component';
 import { CommentsListComponent } from './components/comments-list/comments-list.component';
 import { AuthGuard } from './guards/auth.guard';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 export function tokenGetter() {
@@ -89,6 +91,7 @@ export function tokenGetter() {
     TabViewModule,
     PaginatorModule,
     FileUploadModule,
+    NgxSpinnerModule,
     JwtModule.forRoot({
      config: {
         tokenGetter: tokenGetter,
@@ -105,7 +108,8 @@ export function tokenGetter() {
     ErrorInterceptorProvider,
     MessageListResolver,
     MessageService,
-    AuthGuard
+    AuthGuard,
+    NgxSpinnerService
    ],
   bootstrap: [AppComponent]
 })
