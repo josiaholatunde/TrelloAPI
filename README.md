@@ -14,3 +14,5 @@ The pictures of users are stored using cloudinary's API.
 The Application has methods to seed random users alongside dummy comments, bookings, features, etc.
 
 The application's front end was written in ANGULAR 6 while the Web API was written with ASPNETCORE 2.1
+
+Here is the link to the hosted application: https://trello-event.azurewebsites.net
