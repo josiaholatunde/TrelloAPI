@@ -38,9 +38,11 @@
 html {
   box-sizing: border-box;
   font-size: 62.5%;
-  @media only screen and (max-width: 951px) {
-      font-size: 50%;
 
+}
+@media only screen and (max-width: 951px) {
+  html {
+    font-size: 50%;
   }
 }
 body {

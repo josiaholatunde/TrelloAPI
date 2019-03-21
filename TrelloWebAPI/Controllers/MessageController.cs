@@ -36,11 +36,11 @@ namespace TrelloWebAPI.Controllers
 
         }
         [HttpGet("unread")]
-        public IActionResult GetUnreadNotificationCount(int userId)
+        public async Task<IActionResult> GetUnreadNotificationCount(int userId)
         {
             if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
                 return Unauthorized();
-            var count = _repository.GetUnreadNotificationsCount(userId);
+            var count = await _repository.GetUnreadNotificationsCount(userId);
             return Ok(count);
         }
 

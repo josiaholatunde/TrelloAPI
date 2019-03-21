@@ -23,7 +23,8 @@ namespace TrelloWebAPI.Helpers
         public static async Task<PagedList<T>> CreateAsync(IQueryable<T> query, int pageSize, int pageNumber)
         {
             var count = query.Count();
-            var items = await query.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
+            var items = await query.Skip((pageNumber - 1) * pageSize).Take(pageSize)
+                                    .ToListAsync();
             return new PagedList<T>(items, count, pageSize, pageNumber);
         }
   

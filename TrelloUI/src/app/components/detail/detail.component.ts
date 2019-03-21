@@ -27,6 +27,9 @@ export class DetailComponent implements OnInit {
 
   ngOnInit() {
    this.bookingSubject.comments.splice(2, 1000);
+   if (this.bookingSubject.comments.length > 0) {
+     this.nameOfRecommender = this.bookingSubject.comments[0].fullName;
+   }
 
     this.bookingType = BookingSubjectType[this.bookingSubject.bookingType];
     this.userService.defaultLoggedInStatus.subscribe(status => {

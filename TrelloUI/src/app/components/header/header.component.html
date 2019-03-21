@@ -1,5 +1,5 @@
 <header class="header flex-con">
-    <img src="../assets/img/logo.png" alt="trillo" class="logo">
+    <img src="../assets/img/" alt="trillo" class="logo">
     <form  class="search" (ngSubmit)="changeBooking()" #searchFormControl="ngForm" >
         <p-autoComplete [(ngModel)]="searchParams"
             name="searchParams"
@@ -9,7 +9,7 @@
             [size]="44"
             placeholder="Search your {{ bookingType }} by Name, City or Location"
             [minLength]="1"
-            
+
             >
         </p-autoComplete>
         <button class="search__button" type="submit">

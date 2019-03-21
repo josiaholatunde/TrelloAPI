@@ -18,6 +18,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using Swashbuckle.AspNetCore.Swagger;
 using TrelloWebAPI.Data;
 using TrelloWebAPI.Helpers;
 
@@ -37,7 +38,12 @@ namespace TrelloWebAPI
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddDbContext<DataContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
+            });
             services.AddAutoMapper();
+            services.BuildServiceProvider().GetService<DataContext>().Database.Migrate();
             services.AddCors();
             services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(
@@ -77,14 +83,23 @@ namespace TrelloWebAPI
                     });
                 });
             }
-            //response.Headers.Add("Access-Control-Allow-Origin", "*");
             seedData.SeedUsers();
             seedData.SeedBookings();
             seedData.SeedUserComments();
             app.UseAuthentication();
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
-            app.UseHttpsRedirection();
-            app.UseMvc();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+            });
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
+            app.UseMvc(routes => {
+                routes.MapSpaFallbackRoute(
+                    name: "spa-fallback",
+                    defaults: new { controller ="Fallback", action = "Index"}
+                );
+            });
         }
     }
 }

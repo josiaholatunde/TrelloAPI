@@ -1,0 +1,14 @@
+C:\Users\User\Desktop\TrelloAPI2\TrelloWebAPI\bin\Debug\netcoreapp2.1\TrelloWebAPI.deps.json
+C:\Users\User\Desktop\TrelloAPI2\TrelloWebAPI\bin\Debug\netcoreapp2.1\TrelloWebAPI.runtimeconfig.json
+C:\Users\User\Desktop\TrelloAPI2\TrelloWebAPI\bin\Debug\netcoreapp2.1\TrelloWebAPI.runtimeconfig.dev.json
+C:\Users\User\Desktop\TrelloAPI2\TrelloWebAPI\bin\Debug\netcoreapp2.1\TrelloWebAPI.dll
+C:\Users\User\Desktop\TrelloAPI2\TrelloWebAPI\bin\Debug\netcoreapp2.1\TrelloWebAPI.pdb
+C:\Users\User\Desktop\TrelloAPI2\TrelloWebAPI\obj\Debug\netcoreapp2.1\TrelloWebAPI.csprojAssemblyReference.cache
+C:\Users\User\Desktop\TrelloAPI2\TrelloWebAPI\obj\Debug\netcoreapp2.1\TrelloWebAPI.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\TrelloAPI2\TrelloWebAPI\obj\Debug\netcoreapp2.1\TrelloWebAPI.RazorAssemblyInfo.cache
+C:\Users\User\Desktop\TrelloAPI2\TrelloWebAPI\obj\Debug\netcoreapp2.1\TrelloWebAPI.RazorAssemblyInfo.cs
+C:\Users\User\Desktop\TrelloAPI2\TrelloWebAPI\obj\Debug\netcoreapp2.1\TrelloWebAPI.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\TrelloAPI2\TrelloWebAPI\obj\Debug\netcoreapp2.1\TrelloWebAPI.AssemblyInfo.cs
+C:\Users\User\Desktop\TrelloAPI2\TrelloWebAPI\obj\Debug\netcoreapp2.1\TrelloWebAPI.RazorTargetAssemblyInfo.cache
+C:\Users\User\Desktop\TrelloAPI2\TrelloWebAPI\obj\Debug\netcoreapp2.1\TrelloWebAPI.dll
+C:\Users\User\Desktop\TrelloAPI2\TrelloWebAPI\obj\Debug\netcoreapp2.1\TrelloWebAPI.pdb

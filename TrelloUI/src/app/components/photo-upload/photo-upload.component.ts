@@ -22,7 +22,8 @@ export class PhotoUploadComponent implements OnInit {
   userid: any;
   hasGallery: boolean;
   loggedInUser: any;
-  constructor(private route: ActivatedRoute, private router: Router, private userService: UserService, private booking: BookingSubjectService,
+  constructor(private route: ActivatedRoute, private router: Router, private userService: UserService,
+    private booking: BookingSubjectService,
     private alertify: AlertifyService) {
     this.photos = [];
   }
@@ -96,7 +97,7 @@ export class PhotoUploadComponent implements OnInit {
     this.alertify.confirm('Are you sure you want to delete this gallery photo', () => {
       this.booking.deleteGalleryPhoto(this.bookingId, this.userid, photo.id).subscribe(() => {
         this.alertify.success('Successfully deleted photo');
-      }, err => this.alertify.error('Error occurred'),
+      }, err => this.alertify.error(err),
       () => {
         const index = this.photos.indexOf(photo);
         this.photos.splice(index, 1);

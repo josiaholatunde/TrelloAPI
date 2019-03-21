@@ -137,9 +137,15 @@
   }
 }
 
-.invalid {
-  display: none;
+.valid {
+  background-image: linear-gradient(to right, var(--color-primary-light), var(--color-primary-dark));
+  &:hover {
+    background-image: linear-gradient(to left, var(--color-primary-light), var(--color-primary-dark));
+  }
 }
-.invalid:hover {
-  background: white;
+
+.invalid {
+display: inline-block;
+border-radius: 3rem;
+border: 1px solid #c8c8c8;
 }

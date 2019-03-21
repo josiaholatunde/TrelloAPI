@@ -25,6 +25,6 @@ namespace TrelloWebAPI.Data
         Task<PagedList<Message>> GetMessagesForUser(MessageParams messageParams);
         Task<Message> GetMessage(int messageId);
         Task<IEnumerable<Message>> GetMessageThread(int senderId, int recipientId);
-        int GetUnreadNotificationsCount(int userId);
+        Task<int> GetUnreadNotificationsCount(int userId);
     }
 }

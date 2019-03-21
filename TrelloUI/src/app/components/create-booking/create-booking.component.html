@@ -88,7 +88,7 @@
 <p-footer>
     <input type="submit"
     [disabled]="createBookingGroup.invalid"
-      [ngClass]="createBookingGroup.invalid ? 'invalid': 'login-form__btn login-form__btn-block'" value="Create Booking">
+      [ngClass]="createBookingGroup.invalid ? 'invalid login-form__btn-block': 'valid login-form__btn login-form__btn-block'" value="Create Booking">
   </p-footer>
 </form>
 </p-dialog>

@@ -42,17 +42,23 @@ export class MessageService {
         );
   }
   getMessageThread(recipientId: any) {
-    const userId = this.userService.getLoggedInUser().id;
-    return this.http.get<any[]>(`${this.baseUrl}/users/${userId}/message/thread/${recipientId}`).pipe();
+    if (this.userService.isUserLoggedIn()) {
+      const userId = this.userService.getLoggedInUser().id;
+      return this.http.get<any[]>(`${this.baseUrl}/users/${userId}/message/thread/${recipientId}`).pipe();
+    }
   }
 
    sendMessage(messageToCreateDto: any) {
-    const userId = this.userService.getLoggedInUser().id;
-    return this.http.post<Message>(`${this.baseUrl}/users/${userId}/message`, messageToCreateDto).pipe();
+    if (this.userService.isUserLoggedIn()) {
+      const userId = this.userService.getLoggedInUser().id;
+      return this.http.post<Message>(`${this.baseUrl}/users/${userId}/message`, messageToCreateDto).pipe();
+    }
   }
   getNotificationCount(): any {
-    const userId = this.userService.getLoggedInUser().id;
-    return this.http.get<any[]>(`${this.baseUrl}/users/${userId}/message/unread`).pipe();
+    if (this.userService.isUserLoggedIn()) {
+      const userId = this.userService.getLoggedInUser().id;
+      return this.http.get<any[]>(`${this.baseUrl}/users/${userId}/message/unread`).pipe();
+    }
   }
 
 }

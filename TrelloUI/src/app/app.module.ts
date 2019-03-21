@@ -45,8 +45,9 @@ import { CommentsListComponent } from './components/comments-list/comments-list.
 import { AuthGuard } from './guards/auth.guard';
 
 
-const tokenGetter = () => localStorage.getItem('token');
-
+export function tokenGetter() {
+ return localStorage.getItem('token');
+}
 
 
 @NgModule({

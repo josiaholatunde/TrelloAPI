@@ -30,6 +30,7 @@ namespace TrelloWebAPI.Data
         public async Task<BookingSubject> GetBooking(int id)
         {
             var bookingSubject = await _context.BookingSubjects
+                                    .Include(b => b.GalleryPictures)
                                     .Include(b => b.Features)
                                    .FirstOrDefaultAsync(bs => bs.Id == id);
             return bookingSubject;
@@ -121,10 +122,10 @@ namespace TrelloWebAPI.Data
             return await PagedList<Message>.CreateAsync(messages, messageParams.PageSize, messageParams.PageNumber);
         }
 
-        public int GetUnreadNotificationsCount(int userId)
+        public async Task<int> GetUnreadNotificationsCount(int userId)
         {
-            var notificationCount = _context.Messages.Where(m => m.RecipientId == userId && m.IsRead == false).Count();
-            return notificationCount;
+            var notificationCount = await _context.Messages.Where(m => m.RecipientId == userId && m.IsRead == false).ToListAsync();
+            return notificationCount.Count;
         }
 
         public async Task<IEnumerable<Message>> GetMessageThread(int senderId, int recipientId)
