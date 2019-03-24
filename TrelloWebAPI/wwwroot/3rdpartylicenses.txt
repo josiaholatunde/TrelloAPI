@@ -449,6 +449,9 @@ IN THE SOFTWARE.
 @angular/router
 MIT
 
+ngx-spinner
+MIT
+
 time-ago-pipe
 MIT
 MIT License

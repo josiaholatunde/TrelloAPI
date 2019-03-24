@@ -7,6 +7,17 @@
       display: flex;
       margin: 0;
   }
+  @media only screen and (max-width: 20rem) {
+    padding: 0;
+  }
+  &:last-child {
+    visibility: hidden;
+    @media only screen and (max-width: 46rem) {
+      visibility: visible;
+      cursor: pointer;
+
+  }
+  }
 
   &__item {
       position: relative;
@@ -16,8 +27,11 @@
           margin-bottom: 1rem;
           @media only screen and (max-width: 46rem) {
               margin: 0;
+              visibility: hidden;
+
           }
       }
+
       @media only screen and (max-width: 46rem) {
           flex: 1;
           display: flex;
@@ -77,6 +91,24 @@
       margin-right: .7rem;
   }
 }
+.active {
+  background: var(--color-primary-light);
+
+}
+.ham-con {
+  position: relative;
+}
+.hamburger {
+  position: absolute;
+  right: 0;
+  height: 100%;
+  visibility: hidden;
+  @media only screen and (max-width: 46rem) {
+    visibility: visible;
+
+}
+
+}
 
 
 //LEGAL
@@ -88,4 +120,71 @@
   @media only screen and (max-width: 46rem) {
       display: none;
   }
+}
+
+.flex-column {
+  @media only screen and (max-width: 46rem) {
+    display: flex;
+    flex-direction: column;
+    padding: 1.4rem;
+    visibility: visible;
+    color: white;
+    width: 100%;
+    flex: 1;
+    position: relative;
+  }
+
+  & > * {
+    @media only screen and (max-width: 46rem) {
+      margin-top: 2.7rem;
+      visibility: visible;
+      color: white;
+      font-size: 1.5rem;
+      text-align: left;
+      width: 100%;
+    }
+
+  }
+  & > *:last-child {
+      @media only screen and (max-width: 46rem) {
+        position: absolute;
+        height: 30%;
+        top: -5.4rem;
+        right: .3rem;
+        z-index: 1;
+
+      }
+      @media only screen and (max-width: 37rem) {
+        top: -5.4rem;
+      }
+
+      @media only screen and (max-width: 33rem) {
+        top: -5.4rem;
+      }
+      @media only screen and (max-width: 31rem) {
+        top: -5.4rem;
+        right: .6rem;
+      }
+
+
+  }
+  &__link {
+    @media only screen and (max-width: 46rem) {
+      text-align: left;
+    }
+  }
+  &__item:active {
+    @media only screen and (max-width: 46rem) {
+      background: var(--color-primary-light);
+      width: 100%;
+    }
+  }
+  &__item:not(:last-child):hover {
+    @media only screen and (max-width: 46rem) {
+      width: 100%;
+      transform: scaleY(1);
+    }
+  }
+
+
 }

@@ -98,7 +98,9 @@
       margin-right: .7rem;
       // text-align: left;
       background-color: var(--color-primary);
+      mask-image:  url(../../../assets/img/chevron-thin-right.svg);
       -webkit-mask-image: url(../../../assets/img/chevron-thin-right.svg);
+      mask-size: cover;
       -webkit-mask-size: cover;
       //Older Browsers
       //background-image: url(../img/chevron-thin-right.svg);

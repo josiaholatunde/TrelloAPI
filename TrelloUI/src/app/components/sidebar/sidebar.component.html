@@ -1,6 +1,6 @@
-<ul class="side-nav">
-        <li class="side-nav__item" *ngFor="let route of routeParams">
-           <a  class="side-nav__link" [routerLink]="['/bookings', route.value]">
+<ul class="side-nav" [ngClass]="shouldDisplay ? 'flex-column': 'side-nav'" >
+        <li class="side-nav__item" *ngFor="let route of routeParams" routerLinkActive="active">
+           <a  class="side-nav__link flex-column__link" [routerLink]="['/bookings', route.value]">
             <i class="fa fa-2x {{route.imgIcon}}"></i>
             <!--  <svg class="side-nav__icon">
                  <use xlink:href="../../../assets/img/sprite.svg#{{route.imgIcon}}"></use>
@@ -9,15 +9,18 @@
            </a>
         </li>
 
-         <li class="side-nav__item" (click)="createBooking()" *ngIf="isUserAdmin && IsUserLoggedIn">
+         <li class="side-nav__item" (click)="createBooking()" *ngIf="isUserAdmin && IsUserLoggedIn" routerLinkActive="active">
           <a class="side-nav__link">
               <span class="side-nav__text">Create Booking</span>
           </a>
         </li>
-        <li class="side-nav__item"  *ngIf="isUserAdmin && IsUserLoggedIn">
+        <li class="side-nav__item"  *ngIf="isUserAdmin && IsUserLoggedIn"  routerLinkActive="active">
           <a class="side-nav__link" [routerLink]="['/my-bookings']">
               <span class="side-nav__text">My Bookings</span>
           </a>
+        </li>
+        <li class=" ham-con flex-column__link"  routerLinkActive="active">
+         <i class="fa fa-bars fa-2x hamburger side-nav__link" (click)="displayNavItems()"></i>
         </li>
       </ul>
       <div class="legal">

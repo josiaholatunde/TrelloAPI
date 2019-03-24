@@ -20,8 +20,10 @@ export class SidebarComponent implements OnInit {
   /* @Output() bookingTypeChange = new EventEmitter<BookingSubjectType>(); */
   bookingType: BookingSubjectType;
   loggedInUser: any;
-  isUserAdmin: boolean;
+  isUserAdmin = false;
   IsUserLoggedIn = false;
+  shouldDisplay = false;
+
   constructor(private bookingService: BookingSubjectService, private userService: UserService, private alertify: AlertifyService,
     private router: Router) {}
 
@@ -33,6 +35,8 @@ export class SidebarComponent implements OnInit {
         if (this.loggedInUser) {
           if (this.loggedInUser.userRole === UserRole.Admin) {
             this.isUserAdmin = true;
+          } else {
+            this.isUserAdmin = false;
           }
         }
       }
@@ -47,6 +51,14 @@ export class SidebarComponent implements OnInit {
   }
   createBooking() {
     this.isCreatedBookingChange.emit(true);
+  }
+  displayNavItems() {
+    if (this.shouldDisplay) {
+      this.shouldDisplay = false;
+    } else {
+      this.shouldDisplay = true;
+    }
+
   }
 
 

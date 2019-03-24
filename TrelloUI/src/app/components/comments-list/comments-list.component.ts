@@ -14,6 +14,7 @@ export class CommentsListComponent implements OnInit {
   loggedInUser: any;
   bookingId: number;
   comments: Comment[];
+  currentBookingSubject: any[];
   constructor(private userService: UserService, private bookingService: BookingSubjectService, private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -31,12 +32,18 @@ export class CommentsListComponent implements OnInit {
       }
     })
     this.getComments();
+    this.getBooking();
+  }
+  getBooking(): any {
+    this.bookingService.getBooking(this.bookingId).subscribe(res => {
+      this.currentBookingSubject = res;
+    })
   }
   getComments(): any {
     this.bookingService.getComments(this.bookingId).subscribe((res: Comment[]) => {
       this.comments = res;
     });
   }
-  
+
 
 }

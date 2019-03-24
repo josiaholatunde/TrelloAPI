@@ -52,14 +52,18 @@
           width: 95%;
           background: var(--light-grey-1)
       }
+      @media only screen and (max-width: 23rem) {
+        width: 60%;
+      }
   }
-  
+
   &__icon {
       height: 2rem;
       width: 2rem;
       &:active, &:focus {
         outline: none;
       }
+
   }
   &__button {
       border: none;
@@ -71,9 +75,25 @@
           outline: none;
           transform: translateY(2px);
       }
+      @media only screen and (max-width: 46rem) {
+        left: 39rem;
+    }
       @media only screen and (max-width: 36rem) {
-        left: 42rem;
+        left: 52rem;
       }
+      @media only screen and (max-width: 33rem) {
+        left: 48rem;
+      }
+      @media only screen and (max-width: 31rem) {
+        left: 47rem;
+      }
+      @media only screen and (max-width: 27rem) {
+        left: 43rem;
+      }
+      @media only screen and (max-width: 23rem) {
+        left: 39rem;
+      }
+
 
   }
 }
@@ -100,13 +120,13 @@
       background: var(--grey-dark-2);
       color: white;
   }
- 
+
   & > *:hover .user-nav__icon {
       fill: #fff;
   }
   &__icon-box {
      position: relative;
-    
+
   }
   &__icon-box:focus {
      outline: none;
@@ -140,7 +160,7 @@
     color: var(--color-primary);
     text-transform: uppercase;
   }
- 
+
 }
 
 .user-nav__user {

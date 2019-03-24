@@ -6,6 +6,7 @@ import { Pagination } from 'src/app/models/pagination';
 import { Message } from 'src/app/models/message';
 import { UserService } from 'src/app/services/user.service';
 import { UserRole } from 'src/app/models/UserRole';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-message',
@@ -18,7 +19,7 @@ export class MessageComponent implements OnInit {
   messageContainer = 'Unread';
   loggedInUser: any;
 
-  constructor(private route: ActivatedRoute, private router: Router, private userService: UserService,
+  constructor(private route: ActivatedRoute, private router: Router, private userService: UserService, private spinner: NgxSpinnerService,
     private alertify: AlertifyService,  private messageService: MessageService) { }
 
   ngOnInit() {
@@ -31,22 +32,26 @@ export class MessageComponent implements OnInit {
         }
     }
     this.route.data.subscribe(data => {
+      this.spinner.hide();
       this.messages = data['messages'].result;
       this.pagination = data['messages'].pagination;
     });
   }
+
   loadMessages(messageContainer?: string) {
     if (messageContainer) {
       this.messageContainer = messageContainer;
     }
     this.messageService.getMessagesForUser(this.messageContainer, this.pagination.currentPage, this.pagination.itemsPerPage)
     .subscribe(res => {
+      this.spinner.show();
       this.messages = res.result;
       this.pagination = res.pagination;
     })
   }
   pageChanged(event: any) {
     this.pagination.currentPage = event.page;
+    this.spinner.show();
     this.loadMessages();
   }
   deleteMessage(m: Message) {
