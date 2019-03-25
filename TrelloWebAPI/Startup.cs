@@ -43,7 +43,7 @@ namespace TrelloWebAPI
                 c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
             });
             services.AddAutoMapper();
-            services.BuildServiceProvider().GetService<DataContext>().Database.Migrate();
+           services.BuildServiceProvider().GetService<DataContext>().Database.Migrate();
             services.AddCors();
             services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(
