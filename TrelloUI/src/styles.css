@@ -54,3 +54,19 @@ body {
   line-height: 1.6;
   min-height: 100vh;
 }
+
+.myStyle {
+  width: 550px !important;
+}
+@media only screen and (max-width: 41rem) {
+  .myStyle {
+    width: 80% !important;
+    position: absolute !important;
+    left: 7rem !important;
+  }
+}
+@media only screen and (max-width: 26rem) {
+  .myStyle {
+    left: 5rem !important;
+  }
+}

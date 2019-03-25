@@ -88,6 +88,9 @@ export class AppComponent implements OnInit, OnDestroy {
   openModal($event) {
     this.isModalClicked = true;
     this.display = true;
+    this.bookingService.displayModal(true);
+    this.bookingService.displayNavBar(false);
+
   }
 
   ngOnDestroy(): void {

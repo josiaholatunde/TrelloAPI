@@ -29,6 +29,7 @@ export class MyBookingsComponent implements OnInit {
           }
         }
     }
+    this.bookingService.displayNavBar(false);
     this.loadMyBookings();
   }
   loadMyBookings() {

@@ -1,6 +1,6 @@
-<p-dialog header="Create Booking" [(visible)]="passDisplay" [modal]="true" [responsive]="true"
-[contentStyle]="{width: '550px', minWidth: '400px', maxHeight: '500px'}" [draggable]="false"
-[minY]="70" [baseZIndex]="10000">
+<p-dialog header="Create Booking" styleClass="myStyle" [(visible)]="passDisplay" [modal]="true" [responsive]="true"
+[contentStyle]="{}" [draggable]="false"
+ [baseZIndex]="10000">
 
 <form class="login-form" [formGroup]="createBookingGroup" (ngSubmit)="createBooking()" >
   <div class="form-group animation-group">

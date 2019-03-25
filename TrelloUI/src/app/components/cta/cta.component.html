@@ -1,7 +1,7 @@
 <div class="cta">
     <h2 class="cta__book-now">We have {{ bookingSubject.noOfBookingSubjectsLeft }} rooms left for your selected dates!</h2>
     <button class="btn">
-        <span class="btn__visible">Book now</span>
+        <span class="btn__visible" (click)="bookSubject()">Book now</span>
         <span class="btn__invisible">Only {{ bookingSubject.noOfBookingSubjectsLeft }} rooms left</span>
      </button>
 </div>

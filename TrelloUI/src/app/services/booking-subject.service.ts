@@ -21,9 +21,17 @@ export class BookingSubjectService {
   defaultBookingTypeObservable = this.defaultBookingType.asObservable();
   searchParamsType = new BehaviorSubject('');
   searchParamsTypeObservable = this.searchParamsType.asObservable();
+  shouldDisplayNavBar = new Subject<boolean>();
+  shouldDisplayModal = new Subject<boolean>();
   bookingType: any;
   constructor(private http: HttpClient) { }
 
+  displayNavBar(value: boolean) {
+    this.shouldDisplayNavBar.next(value);
+  }
+  displayModal(value: boolean) {
+    this.shouldDisplayModal.next(value);
+  }
   changeBookingSubject(bookingSubject: BookingSubject) {
     this.defaultSubject.next(bookingSubject);
   }

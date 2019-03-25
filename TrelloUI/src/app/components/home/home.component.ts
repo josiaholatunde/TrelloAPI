@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit, OnChanges {
   bookingSubject: BookingSubject[];
   currentBookingSubject: BookingSubject;
   showMessage = false;
+  shouldCloseNavBar = false;
 
   constructor(private bookingService: BookingSubjectService, private userService: UserService, private spinner: NgxSpinnerService,
      private router: Router, private route: ActivatedRoute) {
@@ -41,6 +42,7 @@ export class HomeComponent implements OnInit, OnChanges {
        if (this.router.url.endsWith('true')) {
          this.userService.changeLoggedInStatus(true);
        }
+       this.bookingService.displayNavBar(false);
         this.spinner.show();
         this.loadBookingSubjects();
       }

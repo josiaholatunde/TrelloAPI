@@ -23,8 +23,10 @@ export class CreateBookingComponent implements OnInit {
   constructor(private fb: FormBuilder, private bookingService: BookingSubjectService, private alertify: AlertifyService) { }
 
   ngOnInit() {
+    this.bookingService.shouldDisplayModal.subscribe(val => this.passDisplay = val);
     this.initialiseForm();
   }
+
   initialiseForm(): any {
     this.createBookingGroup = this.fb.group({
       name: ['', Validators.required],

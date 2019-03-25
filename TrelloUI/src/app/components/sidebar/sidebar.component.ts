@@ -41,6 +41,7 @@ export class SidebarComponent implements OnInit {
         }
       }
    });
+   this.bookingService.shouldDisplayNavBar.subscribe(val => this.shouldDisplay = val);
 
   }
 
